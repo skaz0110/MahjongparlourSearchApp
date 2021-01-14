@@ -12,10 +12,13 @@
   <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
 </form>
 
-<% @posts.each do |post|%>
-  <p>
-    <%= post.title%>
-    <%= post.image%>
-    <%= post.content%>
-  </p>
+<% @posts.each do |post|%>    
+  <div class="card" style="width: 40rem;">
+    <img class="card-img-top" src="..." alt=<%= post.image%>>
+    <div class="card-body">
+      <h4 class="card-title"><%= post.title%></h4>
+      <p class="card-text"><%= post.content%></p>
+      <a href="#" class="btn btn-primary">詳細ボタン</a>
+    </div>
+  </div>
 <% end %>
