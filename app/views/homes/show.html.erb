@@ -1,0 +1,12 @@
+<p>詳細画面</p>
+<%= @post.image %>
+<%= @post.title %>
+<%= @post.content %>
+
+<% @comments.each do |comment|%>
+  <p>
+    <%=comment.content%>
+    <%=comment.user.email%>
+  </p>
+<%end%>
+

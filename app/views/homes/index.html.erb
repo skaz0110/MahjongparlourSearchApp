@@ -13,12 +13,15 @@
 </form>
 
 <% @posts.each do |post|%>    
-  <div class="card" style="width: 40rem;">
+  <div class="card" style="width: 16rem;">
     <img class="card-img-top" src="..." alt=<%= post.image%>>
     <div class="card-body">
       <h4 class="card-title"><%= post.title%></h4>
       <p class="card-text"><%= post.content%></p>
-      <a href="#" class="btn btn-primary">詳細ボタン</a>
+        <div class="btn btn-outline-info">
+          <%= link_to  "詳細ボタン", home_path(post) %>
+        </div>
     </div>
   </div>
 <% end %>
+
