@@ -11,8 +11,6 @@
     <strong>お店のコメント</strong>
       <p class="card-text"><%= @post.content %></p>
     
-    <%
-=begin%>
  <hr>
       <p><strong>お店の詳細</strong></p>
     <hr>
@@ -27,8 +25,7 @@
       <p>定休日：<%= @post.shop_detail.regularholiday%></p>
     <hr>
       <p>ゲーム（フリー）：<%= @post.shop_detail.gamefree%></p> 
-<%
-=end%>
+
 
     <div class="border col-12">
         <br>
@@ -61,18 +58,6 @@
 </div>
 </div>  
 
-
-
-<%
-=begin%>
- <%= form_with(model: [@post,@comment], local: true) do |f| %>
-    <%= f.text_area :content, class: "form-control", rows: 5 %>
-    <%= f.submit 'コメントする' %>
-<% end %> 
-<%
-=end%>
-
-
 <%= form_with(model:[@post, @comment], method: :post) do |f| %>
   <%= f.text_area :content %>
   <%= f.hidden_field :post_id, value: @post.id %>
@@ -81,17 +66,6 @@
 
 
 <h2>コメント一覧</h2>
-<%
-=begin%>
- <% @comments.each do |c| %>
-  <div>
-    <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
-    <%= c.content %>
-    <hr>
-  </div>
-<% end %> 
-<%
-=end%>
 
 <% @comments.each do |comment| %>
   <div>
