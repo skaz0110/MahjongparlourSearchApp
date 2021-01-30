@@ -1,2 +1,101 @@
+<div class="text-center">
 <p>詳細画面</p>
-<% @post %>
+<div class="container">
+<div class="card w-100" style="width: 18rem;">
+<div class="card-body">
+    <h5 class="card-text"><strong><%= @post.title %></strong></h5>
+  </div>
+  <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%"><%= @post.image %></text></svg>
+  <div class="card-body">
+    
+    <strong>お店のコメント</strong>
+      <p class="card-text"><%= @post.content %></p>
+    
+    <%
+=begin%>
+ <hr>
+      <p><strong>お店の詳細</strong></p>
+    <hr>
+      <p>店名：<%= @post.title %></p>
+    <hr>
+      <p>電話番号：<%= @post.shop_detail.phonenumber%></p>
+    <hr>
+      <p>お店までの道のり：<%= @post.shop_detail.access%></p>
+    <hr>
+      <p>営業時間：<%= @post.shop_detail.openinghours%></p>
+    <hr>
+      <p>定休日：<%= @post.shop_detail.regularholiday%></p>
+    <hr>
+      <p>ゲーム（フリー）：<%= @post.shop_detail.gamefree%></p> 
+<%
+=end%>
+
+    <div class="border col-12">
+        <br>
+        <div class="row">
+            <div class="col-md">
+                <form>
+                    <div class="form-group">
+                        <label>コメント欄</label>
+                          
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row center-block text-center">
+            <div class="col-1">
+            </div>
+            <div class="col-5">
+                <button type="button" class="btn btn-outline-primary btn-block">コメントする</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md">
+              
+            </div>
+        </div>
+        <br>
+    </div>
+  </div>
+</div>
+</div>  
+
+
+
+<%
+=begin%>
+ <%= form_with(model: [@post,@comment], local: true) do |f| %>
+    <%= f.text_area :content, class: "form-control", rows: 5 %>
+    <%= f.submit 'コメントする' %>
+<% end %> 
+<%
+=end%>
+
+
+<%= form_with(model:[@post, @comment], method: :post) do |f| %>
+  <%= f.text_area :content %>
+  <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.submit 'コメントする' %>
+<%end%>
+
+
+<h2>コメント一覧</h2>
+<%
+=begin%>
+ <% @comments.each do |c| %>
+  <div>
+    <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
+    <%= c.content %>
+    <hr>
+  </div>
+<% end %> 
+<%
+=end%>
+
+<% @comments.each do |comment| %>
+  <div>
+    <%= comment.content %>
+    <%= comment.user.email %>
+  </div>
+<% end %>

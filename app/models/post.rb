@@ -1,4 +1,4 @@
 class Post < ApplicationRecord
-    has_one :shop_detail, dependent: :destroy
-
+    belongs_to :user
+    has_many :comments, dependent: :destroy 
 end
