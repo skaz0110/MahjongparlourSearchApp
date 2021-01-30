@@ -9,6 +9,13 @@
   <button type="submit" class="btn btn-outline-success my-2 my-sm-0 ">検索</button>
 </form>
 
+<%= form_with model: @post do |f| %>
+    <%= f.text_field :title %>
+    <%= f.text_field :iamge %>
+    <%= f.text_area :content %>
+    <%= f.submit '投稿する' %>
+<% end %>
+
 <div class="container mt-5">
   <div class="row ">
   <% @posts.each do |post|%>
