@@ -1,16 +1,15 @@
 class HomesController < ApplicationController
   def index
     @posts = Post.all
-    @comment = Comment.new
     @comments = Comment.all
-    
   end
 
   def show
-      
+    
     @post = Post.find(params[:id])
     @comments = Comment.order(:id)
     @shopdetails = ShopDetail.order(:id)
+    
     if user_signed_in?
       
     else
@@ -18,8 +17,16 @@ class HomesController < ApplicationController
     end
   end
   
+  def new
+    @comment = Comment.new
+  end
+  
+
   def create
-    @comment = Comment.new(comment_params)
+    Comment.create(comment_params)
+ 
+    
+    redirect_to posts_path
   end
   
 
@@ -35,6 +42,6 @@ class HomesController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content,:user_id)
   end
 end
