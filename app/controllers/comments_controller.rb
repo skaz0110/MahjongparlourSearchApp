@@ -14,6 +14,10 @@ class CommentsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
   
+  def edit
+    @comment =Comment.find_by(id: params[:id],post_id: params[:post_id])
+    
+  end
   
 
   private

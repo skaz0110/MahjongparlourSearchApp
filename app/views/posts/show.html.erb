@@ -55,8 +55,8 @@
                     <% #ログインユーザーとコメントを書いたユーザーが一致すれば表示 %>
                     <% if current_user.id == comment.user_id %>
                       <%= link_to '削除', post_comment_path(comment.post.id, comment.id) , method: :delete %>
-                    <%  end   %>
-                    <%binding.pry%>                
+                      <%= link_to '編集', edit_post_comment_path(comment.post.id,comment.id) %>
+                    <%  end   %>                
                   </p>
                 <% end %>
             </div>

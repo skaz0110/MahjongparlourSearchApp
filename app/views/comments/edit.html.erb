@@ -1,0 +1,15 @@
+コメント編集画面
+
+<%=@comment.content%>
+
+<%= form_with url:post_comment_path do |f| %>
+      <%= f.text_area @comment.content %>
+      <%
+=begin%>
+ <%= f.hidden_field :post_id, value: @post.id %> 
+<%
+=end%>
+                 
+      <%= f.submit  'コメントする'%>
+<%end%>   
+
