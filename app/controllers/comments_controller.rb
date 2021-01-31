@@ -1,25 +1,4 @@
 class CommentsController < ApplicationController
-  def index
-    
-  end
-
-  def new
-  end
-
-  def show
-  end
-
-  # def create
-  #   @comment = Comment.new(comment_params)
-  #   @comment.user_id = current_user.id
-    
-  #   if @comment.save
-  #     redirect_back(fallback_location: root_path)
-  #   else
-  #     redirect_back(fallback_location: root_path)
-  #   end
-
-  # end
 
   def create
     @comment = current_user.comments.new(comment_params)
@@ -30,22 +9,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    Comment.find_by(id: params[:id],post_id: params[:post_id]).destroy
+    redirect_back(fallback_location: root_path)
+  end
+  
+  
+
   private
   def comment_params
     params.require(:comment).permit(:content, :post_id)  #formにてpost_idパラメータを送信して、コメントへpost_idを格納するようにする必要がある。
   end
 
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
-  end
-
-  # private
-  # def comment_params
-  #   params.require(:comment).permit(:content)
-  # end
 end

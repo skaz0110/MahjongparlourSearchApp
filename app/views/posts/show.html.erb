@@ -11,8 +11,6 @@
     <strong>お店のコメント</strong>
       <p class="card-text"><%= @post.content %></p>
     
-    <%
-=begin%>
  <hr>
       <p><strong>お店の詳細</strong></p>
     <hr>
@@ -27,32 +25,40 @@
       <p>定休日：<%= @post.shop_detail.regularholiday%></p>
     <hr>
       <p>ゲーム（フリー）：<%= @post.shop_detail.gamefree%></p> 
-<%
-=end%>
+
 
     <div class="border col-12">
         <br>
         <div class="row">
             <div class="col-md">
-                <form>
-                    <div class="form-group">
-                        <label>コメント欄</label>
-                          
-                        </div>
+                <div class="form-group">
+                    <h5>コメント欄</h5>
+                    <div>
+                      <%= form_with(model:[@post, @comment], method: :post) do |f| %>
+                        <%= f.text_area :content %>
+                        <%= f.hidden_field :post_id, value: @post.id %>
+                        <br>
+                       <%= f.submit  'コメントする'%>
+                      <%end%>    
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-        <div class="row center-block text-center">
-            <div class="col-1">
-            </div>
-            <div class="col-5">
-                <button type="button" class="btn btn-outline-primary btn-block">コメントする</button>
-            </div>
-        </div>
+  
         <div class="row">
             <div class="col-md">
-              
+                <% @comments.each do |comment| %> 
+                  <p>  
+                    <%= comment.content %>
+                    <%= comment.user.email %>
+
+                    <% #ログインユーザーとコメントを書いたユーザーが一致すれば表示 %>
+                    <% if current_user.id == comment.user_id %>
+                      <%= link_to '削除', post_comment_path(comment.post.id, comment.id) , method: :delete %>
+                    <%  end   %>
+                    <%binding.pry%>                
+                  </p>
+                <% end %>
             </div>
         </div>
         <br>
@@ -63,39 +69,5 @@
 
 
 
-<%
-=begin%>
- <%= form_with(model: [@post,@comment], local: true) do |f| %>
-    <%= f.text_area :content, class: "form-control", rows: 5 %>
-    <%= f.submit 'コメントする' %>
-<% end %> 
-<%
-=end%>
 
 
-<%= form_with(model:[@post, @comment], method: :post) do |f| %>
-  <%= f.text_area :content %>
-  <%= f.hidden_field :post_id, value: @post.id %>
-  <%= f.submit 'コメントする' %>
-<%end%>
-
-
-<h2>コメント一覧</h2>
-<%
-=begin%>
- <% @comments.each do |c| %>
-  <div>
-    <a href="/users/<%= @post.user.id %>"><%= c.user.email %></a>
-    <%= c.content %>
-    <hr>
-  </div>
-<% end %> 
-<%
-=end%>
-
-<% @comments.each do |comment| %>
-  <div>
-    <%= comment.content %>
-    <%= comment.user.email %>
-  </div>
-<% end %>
