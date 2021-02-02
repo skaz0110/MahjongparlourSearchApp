@@ -67,6 +67,35 @@
 </div>
 </div>  
 
+<%= form_with(model:[@post, @comment], method: :post) do |f| %>
+<div class="field">
+  <div>
+    <%= f.label :content%>
+<%= f.text_field :content %>
+  </div>
+<div>
+
+</div>
+
+    <div class="form-group row" id="star">
+    <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
+<%= f.hidden_field :star, id: :review_star %>
+<%= f.hidden_field :post_id, value: @post.id %>
+<%= f.submit  %>
+  </div>
+<!-- 評価javascript -->
+<script>
+$('#star').raty({
+size : 36,
+starOff: '<%= asset_path('star-off.png') %>',
+starOn : '<%= asset_path('star-on.png') %>',
+starHalf: '<%= asset_path('star-half.png') %>',
+scoreName: 'comment[star]',
+half: true,
+});
+</script>  
+
+<% end %>
 
 
 
