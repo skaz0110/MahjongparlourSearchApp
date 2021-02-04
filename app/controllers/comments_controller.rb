@@ -1,11 +1,14 @@
 class CommentsController < ApplicationController
 
+  def index
+     
+    @post = Post.find(params[:post_id])
+    @comment = current_user.comments.new  
+    
+  end
+  
   def create
     @comment = current_user.comments.new(comment_params)
-    
-    
-    
-    
     
     if @comment.save
       redirect_back(fallback_location: root_path)  #コメント送信後は、一つ前のページへリダイレクトさせる。
