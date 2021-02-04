@@ -1,12 +1,9 @@
 class CommentsController < ApplicationController
 
   def index
-    
      
-     @post = (params)
-     
- 
-     
+    @post = Post.find(params[:post_id])
+    @comment = current_user.comments.new  
     
   end
   

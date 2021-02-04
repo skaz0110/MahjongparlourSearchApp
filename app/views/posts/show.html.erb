@@ -54,6 +54,21 @@
                     <%= comment.content %>
                     <%= comment.user.email %>
 
+                    <!--星評価-->
+                    <div id="star-rate-<%= comment.id %>"></div>
+                      <script>
+                      $('#star-rate-<%= comment.id %>').raty({
+                        size: 36,
+                        starOff:  '<%= asset_path('star-off.png') %>',
+                        starOn :  '<%= asset_path('star-on.png') %>',
+                        starHalf: '<%= asset_path('star-half.png') %>',
+                        half: true,
+                        readOnly: true,
+                        score: `<%= comment.star %>`,
+                      });
+                      </script>  
+                    <!--/星評価-->
+
                     <% #ログインユーザーとコメントを書いたユーザーが一致すれば表示 %>
                     <% if current_user.id == comment.user_id %>
                       <%= link_to '削除', post_comment_path(comment.post.id, comment.id) , method: :delete %>
