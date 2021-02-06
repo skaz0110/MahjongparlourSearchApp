@@ -10,7 +10,7 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/v4-shims';
 
 
-// likes.scss
+// いいねボタン
 .like-link {
   text-decoration: none;
 }
@@ -27,4 +27,10 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 .unlike-btn {
   font-size: 15px;
   color: #e54747;
+}
+
+// リンクの色を黒に変える
+.Editlink{
+  text-decoration: none;
+  color: black ;
 }
