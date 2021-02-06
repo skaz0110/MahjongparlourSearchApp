@@ -13,8 +13,8 @@
 <div class="container mt-5">
   <div class="row ">
     <% @posts.each do |post|%>
-      <%= link_to post_path(post) ,class: "Editlink" do%>
-        <div class="col-12 col-md-6 col-lg-4 mb-4">
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <%= link_to post_path(post) ,class: "Editlink" do%>
           <div class="card border-dark h-100">
             <%= post.image%>
             <img class="card-img-top" <%= image_tag '背景画像.jpg'%>>
@@ -27,8 +27,8 @@
               </p>  
             </div>
           </div>  
-        </div>
-      <%end%>
+        <%end%>
+      </div>
     <%end%>
   </div>
 </div>
