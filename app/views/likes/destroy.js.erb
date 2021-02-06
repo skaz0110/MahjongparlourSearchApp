@@ -1,2 +1,3 @@
-
+// 部分テンプレートの切り替えができるように記述
+// 「innerHTMLメソッド」を使用することで、特定のHTML要素を置き換えることができる
 document.getElementById('post_<%= @post.id %>').innerHTML = '<%= j(render @post) %>'
