@@ -11,9 +11,13 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     
     if @comment.save
-      redirect_back(fallback_location: root_path)  #コメント送信後は、一つ前のページへリダイレクトさせる。
+
+      # 投稿の詳細ページへ戻る
+      redirect_to post_path(params[:post_id])
     else
-      redirect_back(fallback_location: root_path)  #同上
+
+      # 一つ前のページへ戻る
+      redirect_back(fallback_location: root_path)
     end
   end
 

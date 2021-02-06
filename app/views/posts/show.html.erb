@@ -6,6 +6,9 @@
 <div class="card w-100" style="width: 18rem;">
 <div class="card-body">
     <h5 class="card-text"><strong><%= @post.title %></strong></h5>
+    <% @comments.each do |comment| %>
+    <%= comment.star%>
+    <%end%>
   </div>
   <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%"><%= @post.image %></text></svg>
   <div class="card-body">
@@ -31,22 +34,7 @@
 
     <div class="border col-12">
         <br>
-        <div class="row">
-            <div class="col-md">
-                <div class="form-group">
-                    <h5>コメント欄</h5>
-                    <div>
-                      <%= form_with(model:[@post, @comment], method: :post) do |f| %>
-                        <%= f.text_area :content %>
-                        <%= f.hidden_field :post_id, value: @post.id %>
-                        <br>
-                       <%= f.submit  'コメントする'%>
-                      <%end%>    
-                    </div>
-                </div>
-            </div>
-        </div>
-  
+        <h5>口コミ一覧</h5>
         <div class="row">
             <div class="col-md">
                 <% @comments.each do |comment| %> 
@@ -73,7 +61,7 @@
                     <% if current_user.id == comment.user_id %>
                       <%= link_to '削除', post_comment_path(comment.post.id, comment.id) , method: :delete %>
                       <%= link_to '編集', edit_post_comment_path(comment.post.id,comment.id) %>
-                    <%  end   %>                
+                    <% end  %>                
                   </p>
                 <% end %>
             </div>
@@ -82,38 +70,7 @@
     </div>
   </div>
 </div>
-</div>  
-
-<%= form_with(model:[@post, @comment], method: :post) do |f| %>
-<div class="field">
-  <div>
-    <%= f.label :content%>
-<%= f.text_field :content %>
-  </div>
-<div>
-
-</div>
-
-    <div class="form-group row" id="star">
-    <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
-<%= f.hidden_field :star, id: :review_star %>
-<%= f.hidden_field :post_id, value: @post.id %>
-<%= f.submit  %>
-  </div>
-<!-- 評価javascript -->
-<script>
-$('#star').raty({
-size : 36,
-starOff: '<%= asset_path('star-off.png') %>',
-starOn : '<%= asset_path('star-on.png') %>',
-starHalf: '<%= asset_path('star-half.png') %>',
-scoreName: 'comment[star]',
-half: true,
-});
-</script>  
-
-<% end %>
-
+</div> 
 
 
 
