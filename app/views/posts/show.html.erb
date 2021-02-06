@@ -3,19 +3,28 @@
 <%= link_to "口コミ投稿", post_comments_path(@post.id) %>
 
 <div class="container">
-<div class="card w-100" style="width: 18rem;">
-<div class="card-body">
-    <h5 class="card-text"><strong><%= @post.title %></strong></h5>
-    <% @comments.each do |comment| %>
-    <%= comment.star%>
-    <%end%>
-  </div>
+  <div class="card w-100" style="width: 18rem;">
+    <div class="card-body">
+      <div class="card-text">
+        <h5><strong><%= @post.title %></strong></h5>
+      </div>
+      <div class="card-text">
+        <%# 以下を追記 %>
+        <% if current_user.liked_by?(@post.id) %>
+          <td><%= link_to 'いいねを外す', destroy_like_path(@post), method: :DELETE %></td>
+        <% else %>
+          <td><%= link_to 'いいね', create_like_path(@post), method: :POST %></td>
+        <% end %>
+      </div>
+    </div>
   <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%"><%= @post.image %></text></svg>
   <div class="card-body">
     
     <strong>お店のコメント</strong>
       <p class="card-text"><%= @post.content %></p>
     
+    <%
+=begin%>
  <hr>
       <p><strong>お店の詳細</strong></p>
     <hr>
@@ -29,7 +38,9 @@
     <hr>
       <p>定休日：<%= @post.shop_detail.regularholiday%></p>
     <hr>
-      <p>ゲーム（フリー）：<%= @post.shop_detail.gamefree%></p> 
+      <p>ゲーム（フリー）：<%= @post.shop_detail.gamefree%></p>  
+<%
+=end%>
 
 
     <div class="border col-12">
