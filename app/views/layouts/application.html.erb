@@ -12,9 +12,17 @@
   </head>
 
   <body>
+  
     <header class="sticky-top">
       <%= render  'layouts/header' %>
     </header>
+  
     <%= yield %>
+    
+    <footer class="footer">
+      <%= render 'layouts/footer' %>
+    </footer>
+    
+    
   </body>
 </html>
