@@ -5,7 +5,7 @@
 
 <%= form_with model: @post do |f| %>
     <label>店名<%= f.text_field :title    %></label>
-    <label>画像<%= f.text_field :iamge    %></label>
+    <label>画像<%= f.file_field :image    %></label>
     <label>内容<%= f.text_area  :content  %></label>
     <%=f.submit '投稿する' %>
 <% end %>
@@ -16,8 +16,7 @@
       <div class="col-12 col-md-6 col-lg-4 mb-4">
         <%= link_to post_path(post) ,class: "Editlink" do%>
           <div class="card border-dark h-100">
-            <%= post.image%>
-            <img class="card-img-top" <%= image_tag '背景画像.jpg'%>>
+            <img class="card-img-top" src="<%= post.image %>">
             <div class="card-body">
               <div class="card-title">
                 <h5><%= post.title%></h5>
