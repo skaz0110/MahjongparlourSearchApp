@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
     def index
-        
+
+      @post = Post.new
+    
     end
     
       def show
@@ -31,7 +33,8 @@ class PostsController < ApplicationController
         if @post.save
           
             #　コメント送信後は、一つ前のページへリダイレクトさせる。
-            redirect_back(fallback_location: root_path)  
+            redirect_to post_path(@post)
+          
         else
             
             #　コメント送信後は、一つ前のページへリダイレクトさせる。

@@ -1,1 +1,37 @@
-postindex
+<div class="card col-sm-8 mx-auto mt-5">
+
+    <div class="d-flex align-items-center">
+    <h1>投稿</h1>
+    <div class="ml-auto posts_button">
+        <a class="btn btn-outline-info" href="/homes">投稿一覧</a>
+    </div>
+    </div>
+
+    <%= form_with model: @post do |f|  %>
+        <div class="form-group">
+            <%= f.label :title, '店名' %>
+            <%= f.text_field :title, class: 'form-control' %>
+            <small id="poster-tip" class="form-text text-muted">
+                店舗名を入力してね
+            </small>
+        </div>
+        <div class="form-group">
+            <%= f.label :content, '投稿内容' %>
+            <%= f.text_area :content, class: 'form-control', rows:10 %>
+            <small id=content-tip" class="form-text text-muted">
+                お店の紹介してね
+            </small>
+        </div>
+        <div class="form-group">
+            <%= f.label :image, '画像' %>
+            <%= f.file_field :image, class: 'form-control' %>
+            <small id="poster-tip" class="form-text text-muted">
+                画像を入れてね
+            </small>
+        </div>
+        <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
+        <small id="submit-tip" class="form-text text-muted">
+            投稿する前に投稿内容を見直してください!
+        </small>
+    <% end %>
+</div>
