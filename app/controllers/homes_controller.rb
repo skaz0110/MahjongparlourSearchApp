@@ -1,7 +1,7 @@
 class HomesController < ApplicationController
   
   # 1ページの表示数
-  PER_PAGE = 10
+  PER_PAGE = 9
 
   def index
     if user_signed_in?
@@ -10,9 +10,10 @@ class HomesController < ApplicationController
       # @posts = current_user.posts.all
       
       # 投稿一覧画面で新規投稿を行うので、formのパラメータ用にPostオブジェクトを取得  
-      # @post = current_user.posts.new       
-      
-      @posts = Post.page(params[:page]).per(PER_PAGE)
+      # @post = current_user.posts.new  
+
+      @q = Post.ransack(params[:q])
+      @posts = @q.result.page(params[:page]).per(PER_PAGE)
     
     else
       
