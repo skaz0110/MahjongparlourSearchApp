@@ -1,7 +1,6 @@
 <%= search_form_for @q ,url: root_path do |f| %>
-  <%= f.label :title_cont, "氏名" %>
-  <%= f.search_field :title_cont %>
-  <%= f.submit "検索" %>
+  <%= f.search_field :title_cont ,class:"form-control mr-sm-2"%>
+  <%= f.submit ("検索する")%>
 <% end %>
 
 <div class="container mt-5">
