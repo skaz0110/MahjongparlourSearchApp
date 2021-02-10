@@ -1,1 +1,29 @@
 <h5>お気に入り</h5>
+
+<% @likes.each do |like|  %>
+<% post = Post.find(like.post_id) %>
+<%=  post.title%>
+<% end %>
+
+<div class="container mt-5">
+  <div class="row ">
+    <% @likes.each do |like|%>
+    <% post = Post.find(like.post_id) %>
+      <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <%= link_to post_path(post) ,class: "Editlink" do%>
+          <div class="card border-dark h-100">
+            <img class="card-img-top" src="<%= post.image %>">
+            <div class="card-body">
+              <div class="card-title">
+                <h5><%= post.title%></h5>
+              </div>
+              <p class="card-text">
+                <%= post.content%>
+              </p>  
+            </div>
+          </div>  
+        <%end%>
+      </div>
+    <%end%>
+  </div>
+</div>

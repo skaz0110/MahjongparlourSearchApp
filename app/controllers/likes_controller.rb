@@ -3,8 +3,9 @@ class LikesController < ApplicationController
 
   def index
     
-    user = current_user
-    @likes = user.likes
+    @user = current_user
+    @likes = @user.likes
+    
     
   end
   
