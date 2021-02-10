@@ -1,8 +1,9 @@
 # 削除
 # User.destroy_all
 # Comment.destroy_all
-Post.destroy_all
+# Post.destroy_all
 # ShopDetail.destroy_all
+ Like.destroy_all
 
 #  post1=Post.create!(:title => 'ジャン綾瀬', :image => '画像', :content => '足立区綾瀬の雀荘です！')
 #  post2=Post.create!(:title => '川崎一番', :image => '画像', :content => '神奈川県川崎市の雀荘です！')
