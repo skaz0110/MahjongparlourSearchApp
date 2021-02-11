@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
-  has_many :comments
+  has_many :comments,  dependent: :destroy
   has_many :likes
   
   ##  画像用
@@ -11,6 +11,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  ##  いいねが存在しているかをチェック
   def liked_by?(post_id)
     likes.where(post_id: post_id).exists?
   end
@@ -18,6 +19,9 @@ class User < ApplicationRecord
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
+      user.username = "ゲスト雀士"
+    
+  
       # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
   end

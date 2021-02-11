@@ -56,11 +56,22 @@ body {
   border-radius: 15px;    /*角を丸くする*/
 }
 
+/*ヘッダーアイコンのデザイン*/
 .icon_image {
   width: 30px;
   height: 30px;
   //サイズ指定
   border-radius: 100px;
+  //画像を丸くする
+  object-fit: cover;
+  //タテヨコ比を変えないままトリミング
+}
+/*マイページのユーザー画像デザイン*/
+.mypage_image{
+  width: 150px;
+  height: 150px;
+  //サイズ指定
+  border-radius: 30px;
   //画像を丸くする
   object-fit: cover;
   //タテヨコ比を変えないままトリミング
