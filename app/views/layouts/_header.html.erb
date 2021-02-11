@@ -23,7 +23,10 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#"><%= current_user.username %></a>
+          <a class="nav-link" href="#"><%= current_user.username %></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#"><img src=<%= current_user.image %> class = "icon_image"></a>
         </li>
       </ul>
 
