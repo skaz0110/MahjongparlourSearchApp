@@ -1,29 +1,38 @@
-<h5>口コミ投稿フォーム</h5>
+<div class="card col-sm-8 mx-auto mt-5">
 
-<%= form_with(model:[@post, @comment], method: :post) do |f| %>
-<div class="field">
-  <div>
-    <%= f.label :content%>
-    <%= f.text_field :content %>
-  </div>
+    <div class="d-flex align-items-center">
+    <h1>口コミ投稿</h1>
+    <div class="ml-auto posts_button">
+    </div>
+    </div>
+
+    <%= form_with(model:[@post, @comment], method: :post) do |f|  %>
+        <div class="form-group row" id="star">
+        <%= f.label :star,'初心者オススメ度', class:'col-md-3' %>
+        <%= f.hidden_field :star, id: :review_star %>
+        <%= f.hidden_field :post_id, value: @post.id %>
+        </div>
+        <div class="form-group">
+            <%= f.label :content, '投稿内容' %>
+            <%= f.text_area :content, class: 'form-control', rows:10 %>
+            <small id=content-tip" class="form-text text-muted">
+                理由
+            </small>
+        </div>
+        <%= f.submit '投稿する', class: 'btn btn-info btn-block' %>
+        <small id="submit-tip" class="form-text text-muted">
+            投稿する前に投稿内容を見直してください!
+        </small>
+        
+        <script>
+          $('#star').raty({
+          size : 36,
+          starOff: '<%= asset_path('star-off.png') %>',
+          starOn : '<%= asset_path('star-on.png') %>',
+          starHalf: '<%= asset_path('star-half.png') %>',
+          scoreName: 'comment[star]',
+          half: true,
+          });
+        </script>  
+    <% end %>
 </div>
-<div class="form-group row" id="star">
-  <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
-  <%= f.hidden_field :star, id: :review_star %>
-  <%= f.hidden_field :post_id, value: @post.id %>
-  <%= f.submit  %>
-</div>
-
-<!-- 評価javascript -->
-<script>
-$('#star').raty({
-size : 36,
-starOff: '<%= asset_path('star-off.png') %>',
-starOn : '<%= asset_path('star-on.png') %>',
-starHalf: '<%= asset_path('star-half.png') %>',
-scoreName: 'comment[star]',
-half: true,
-});
-</script>  
-
-<% end %> 
