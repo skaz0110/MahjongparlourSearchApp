@@ -16,12 +16,11 @@ class User < ApplicationRecord
     likes.where(post_id: post_id).exists?
   end
 
+  # ゲストログイン用のアカウントを生成する sessions_controllerで呼び出し
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user|
       user.password = SecureRandom.urlsafe_base64
       user.username = "ゲスト雀士"
-    
-  
       # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
   end

@@ -23,6 +23,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   #  end
+
+  # デフォルト画像の設定
   def default_url(*args)
     "/images/" + [version_name, "default.png"].compact.join('_')
   end
