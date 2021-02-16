@@ -1,29 +1,25 @@
 <h5>お気に入り</h5>
 
-<% @likes.each do |like|  %>
-<% post = Post.find(like.post_id) %>
-<%=  post.title%>
-<% end %>
-
-<div class="container mt-5">
-  <div class="row ">
-    <% @likes.each do |like|%>
-    <% post = Post.find(like.post_id) %>
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <%= link_to post_path(post) ,class: "Editlink" do%>
-          <div class="card border-dark h-100">
-            <img class="card-img-top" src="<%= post.image %>">
-            <div class="card-body">
-              <div class="card-title">
-                <h5><%= post.title%></h5>
-              </div>
-              <p class="card-text">
-                <%= post.content%>
-              </p>  
-            </div>
-          </div>  
-        <%end%>
-      </div>
-    <%end%>
-  </div>
-</div>
+<table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">店名</th>
+      <th scope="col">お店の紹介</th>
+      <th scope="col">口コミ</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @likes.each.with_index(1) do |like,index|%>
+  <% post = Post.find(like.post_id) %>
+  <%= link_to post_path(post) ,class: "Editlink" do%>
+    <tr>
+      <th scope="row"><%= index%></th>
+      <td><%= post.title%></td>
+      <td><%= post.content.truncate(50)%></td>
+      <td>星５</td>
+    </tr>
+  <%end%>
+  <%end%>
+  </tbody>
+</table>
