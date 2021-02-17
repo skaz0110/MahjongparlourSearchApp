@@ -1,7 +1,7 @@
 # 削除
 # User.destroy_all
 # User.last.destroy
-# Comment.destroy_all
+# Review.destroy_all
 # Post.destroy_all
 # ShopDetail.destroy_all
 # Like.destroy_all
@@ -16,11 +16,11 @@
 # user3 = User.create!(email: "tanaka@example.com", password: "password")
 # user4 = User.create!(email: "test@example.com", password: "password")
 
-# Comment.create!(content: "沖縄そば", user_id: user2.id)
-# Comment.create!(content: "海ぶどう", user_id: user1.id)
-# Comment.create!(content: "ゴーヤチャンプル", user_id: user3.id)
-# Comment.create!(content: "サータアンダギー", user_id: user3.id)
-# Comment.create!(content: "タコライス", user_id: user1.id)
+# Review.create!(content: "沖縄そば", user_id: user2.id)
+# Review.create!(content: "海ぶどう", user_id: user1.id)
+# Review.create!(content: "ゴーヤチャンプル", user_id: user3.id)
+# Review.create!(content: "サータアンダギー", user_id: user3.id)
+# Review.create!(content: "タコライス", user_id: user1.id)
 
 # ShopDetail.create!(address: "東京都葛飾区",phonenumber: "080",access: "足立駅から北に２分",openinghours: "オープン〜ラスト",regularholiday: "水曜日",gamefree: "３００円",gameset: "４００円", post_id: post1.id)
 # ShopDetail.create!(address: "松山市",phonenumber: "080",access: "松山駅から北に２分",openinghours: "オープン〜ラスト",regularholiday: "木曜",gamefree: "４００円",gameset: "５００円", post_id: post4.id)
