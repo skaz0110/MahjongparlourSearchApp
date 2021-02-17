@@ -1,4 +1,4 @@
-ActiveAdmin.register Comment, :as => "ReviewComment" do
+ActiveAdmin.register Review do
 
   permit_params :content,:star,:image,:title,:user_id,:post_id
   
