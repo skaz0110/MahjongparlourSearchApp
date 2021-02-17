@@ -1,9 +1,9 @@
 コメント編集画面
 
-<%=@comment.content%>
+<%=@review.content%>
 
-<%= form_with url:post_comment_path do |f| %>
-      <%= f.text_area @comment.content %>
+<%= form_with url:post_review_path do |f| %>
+      <%= f.text_area @review.content %>
       <%
 =begin%>
  <%= f.hidden_field :post_id, value: @post.id %> 
