@@ -1,5 +1,6 @@
 ActiveAdmin.register Review do
 
+  permit_params :content,:post_id,:star,:user_id
 
   #permit_params :user_id, :post_id, :image,:title,:star
 
