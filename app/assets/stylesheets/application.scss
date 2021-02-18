@@ -76,3 +76,13 @@ body {
   object-fit: cover;
   //タテヨコ比を変えないままトリミング
 }
+
+.comment-list{
+  width: 30px;
+  height: 30px;
+  //サイズ指定
+  border-radius: 100px;
+  //画像を丸くする
+  object-fit: cover;
+  //タテヨコ比を変えないままトリミング
+}

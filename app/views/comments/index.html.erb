@@ -1,1 +1,44 @@
-<h5>雀活コメント</h5>
+<div class="text-center mt-5">
+  <div class="container">
+    <div class="card w-100" style="width: 18rem;">
+      <div class="card-body">
+        <div class="card-text">
+          <h5><strong>
+            <%= @post.title %>
+          </strong></h5>
+            <%= link_to "口コミ投稿", post_reviews_path(@post.id) %>
+        </div>
+          <div class="card-text">
+            <div id="post_<%= @post.id %>">
+              <%= render 'post' %>
+            </div>
+          </div>
+      </div>
+      
+      <div>
+        <%= link_to "店舗詳細" ,post_path(@post)%>
+        <%= link_to "雀活" ,post_comments_path(@post)%>
+      </div>
+      
+      
+    <img class="card-img-top" width="100%" height="300"  src="<%= @post.image %>">
+    <div class="card-body">
+      <div>
+        <h5>
+          コメント一覧
+        </h5>
+        <% @comments.each do |comment| %>
+          <p><hr>
+            <img  height="40" src="<%= comment.user.image %>">
+            <%= comment.user.username %>
+            <%= comment.created_at %>
+          </p> 
+            <%= comment.content %>
+        <% end %> 
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+
