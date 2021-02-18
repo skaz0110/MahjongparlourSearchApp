@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :reviews,  dependent: :destroy
   has_many :likes
+  has_many :comments
   
   ##  画像用
   mount_uploader :image, ImageUploader
