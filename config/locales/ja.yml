@@ -1,0 +1,7 @@
+
+# lメソッドを使用時,以下のフォーマットに変更
+ja:
+  time:
+    formats:
+      default: "%Y/%m/%d"
+      # default: "%Y/%m/%d %H:%M"
