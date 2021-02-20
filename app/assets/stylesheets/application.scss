@@ -77,6 +77,7 @@ body {
   //タテヨコ比を変えないままトリミング
 }
 
+// コメント一覧のアイコンサイズ
 .comment-list{
   width: 30px;
   height: 30px;
@@ -85,4 +86,9 @@ body {
   //画像を丸くする
   object-fit: cover;
   //タテヨコ比を変えないままトリミング
+}
+
+// 全ページの背景
+body {
+	background-color:#EEEEEE	;		/*ページ全体の背景色*/
 }
