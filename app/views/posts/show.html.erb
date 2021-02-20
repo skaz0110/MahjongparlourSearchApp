@@ -66,10 +66,9 @@
                         half: true,
                         readOnly: true,
                         score: `<%= review.star %>`,
-                      });
-                      </script>  
+                      })
+                      </script> 
                     <!--/星評価-->
-
                     <% #ログインユーザーとコメントを書いたユーザーが一致すれば表示 %>
                     <% if current_user.id == review.user_id %>
                       <%= link_to '削除', post_review_path(review.post.id, review.id) , method: :delete %>
