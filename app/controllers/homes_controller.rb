@@ -20,7 +20,9 @@ class HomesController < ApplicationController
       published_after: after.iso8601,
       published_before: before.iso8601
     }
+
     service.list_searches(:snippet, opt)
+
   end
 
   # 1ページの表示数
@@ -32,7 +34,8 @@ class HomesController < ApplicationController
       @posts = @q.result.page(params[:page]).per(PER_PAGE)
       
       # 動画を取得
-      @youtube_data = find_videos('Mリーグ')
+      @youtube_data = find_videos('M.LEAGUE [プロ麻雀リーグ]')
+  
   end
   
 end
