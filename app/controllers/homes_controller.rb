@@ -4,7 +4,7 @@ class HomesController < ApplicationController
   require 'google/apis/youtube_v3'
   require 'active_support/all'
   
-  GOOGLE_API_KEY = "AIzaSyBuG9WwRiGjDRgByGPLpjvDNdJOjm89eqk"
+  GOOGLE_API_KEY = "AIzaSyA3Z2MVyChn2wavCxawDBDhkK8yMup8its"
 
   def find_videos(keyword, after: 1.months.ago, before: Time.now)
     service = Google::Apis::YoutubeV3::YouTubeService.new

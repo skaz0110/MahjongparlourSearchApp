@@ -30,14 +30,22 @@
 
 <div id="rateYo"></div>
 
-<div class="mx-auto" style="width: 200px;">
+<!-- ページネーション -->
+<div class="mx-auto" style="width: 200px;margin-bottom:150px;">
   <%= paginate @posts %>
 </div>
 
-<% @youtube_data.items.each do |item| %>
-  <% snippet = item.snippet %>
-  <p><%= snippet.title %></p>
-  <p><%= snippet.published_at%></p>
-  <p><%= snippet.channel_title %></p>
-  <div><iframe width="560" height="315" src="https://www.youtube.com/embed/<%= item.id.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
-<% end %>
+<!-- youtube動画 -->
+<div class="container">
+  <h3>Mリーグ最新動画</h3>
+    <div class="border rounded" style="padding:50px;background-color:white;">
+      <% @youtube_data.items.each do |item| %>
+        <% snippet = item.snippet %>
+        <!--<p><%= snippet.published_at%></p>-->
+          <div class="youtube">
+            <iframe src="https://www.youtube.com/embed/<%= item.id.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        <h4 style="padding:30px;"><%= snippet.title %></h4>
+      <% end %>
+    </div>
+</div>
