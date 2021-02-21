@@ -35,6 +35,8 @@ class HomesController < ApplicationController
       
       # 動画を取得
       @youtube_data = find_videos('M.LEAGUE [プロ麻雀リーグ]')
+
+      @comments = Comment.all.order(id: "DESC").limit(5)
   
   end
   

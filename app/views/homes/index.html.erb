@@ -1,51 +1,70 @@
 
-<div class="mx-auto" style="width: 400px;" >
-<%= search_form_for @q ,url: root_path do |f| %>
-  <%= f.search_field :title_cont ,class:"form-control mr-sm-2"%>
-  <%= f.submit ("検索"),class:"btn btn-outline-success my-2 my-sm-0"%>
-<% end %>
+<div class="mx-auto" style="width: 400px;margin-top:70px;" >
+  <%= search_form_for @q ,url: root_path do |f| %>
+    <%= f.search_field :title_cont ,class:"form-control mr-sm-2"%>
+    <%= f.submit ("検索"),class:"btn btn-outline-success my-2 my-sm-0"%>
+  <% end %>
 </div>
 
 <div class="container mt-5">
-  <div class="row ">
-    <% @posts.each do |post|%>
-      <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <%= link_to post_path(post) ,class: "Editlink" do%>
-          <div class="card border-dark h-100">
-            <img class="card-img-top" src="<%= post.image %>">
-            <div class="card-body">
-              <div class="card-title">
-                <h5><%= post.title%></h5>
+  <div class="border rounded" style="padding:50px;background-color:white;margin-bottom:100px;"> 
+    <div class="row ">
+      <% @posts.each do |post|%>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+          <%= link_to post_path(post) ,class: "Editlink" do%>
+            <div class="card border-dark h-100">
+              <img class="card-img-top" src="<%= post.image %>">
+              <div class="card-body">
+                <div class="card-title">
+                  <h5><%= post.title%></h5>
+                </div>
+                <p class="card-text">
+                  <%= post.content.truncate(100)%>
+                </p>  
               </div>
-              <p class="card-text">
-                <%= post.content.truncate(100)%>
-              </p>  
-            </div>
-          </div>  
-        <%end%>
+            </div>  
+          <%end%>
+        </div>
+      <%end%>
+    </div>
+    <!-- ページネーション -->
+      <div class="mx-auto" style="width: 200px;">
+        <%= paginate @posts %>
       </div>
-    <%end%>
   </div>
 </div>
 
-<div id="rateYo"></div>
 
-<!-- ページネーション -->
-<div class="mx-auto" style="width: 200px;margin-bottom:150px;">
-  <%= paginate @posts %>
-</div>
 
 <!-- youtube動画 -->
-<div class="container">
+<!--
+<div class="container" style="margin-bottom:150px;">
   <h3>Mリーグ最新動画</h3>
     <div class="border rounded" style="padding:50px;background-color:white;">
       <% @youtube_data.items.each do |item| %>
         <% snippet = item.snippet %>
-        <!--<p><%= snippet.published_at%></p>-->
           <div class="youtube">
             <iframe src="https://www.youtube.com/embed/<%= item.id.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
         <h4 style="padding:30px;"><%= snippet.title %></h4>
+      <% end %>
+    </div>
+</div>
+-->
+
+<!-- youtube動画 -->
+<div class="container">
+  <h3>新着雀活</h3>
+    <div class="border rounded" style="padding:50px;background-color:white;">
+      <% @comments.each do |comment| %>
+        <p>
+          <hr>
+            <img  height="40" src="<%= comment.user.image %>">
+            <%= comment.user.username %>
+            <%= l comment.created_at %>
+        </p>
+          <p>【<%= comment.post.title%>】</p>
+          <%= comment.content %>
       <% end %>
     </div>
 </div>
