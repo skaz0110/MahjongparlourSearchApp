@@ -1,5 +1,6 @@
 class HomesController < ApplicationController
   
+  ## aaaa
   # YoutubeAPIでMリーグの動画を表示
   require 'google/apis/youtube_v3'
   require 'active_support/all'
