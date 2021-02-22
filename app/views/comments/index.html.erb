@@ -1,38 +1,38 @@
-<div class="text-center mt-5 ">
-  <div class="container ">
-    <div class="card w-100 " style="width: 18rem;">
+  <div class="container mt-5">
+    <div class="card w-100 " style="width: 18rem;padding:30px;">
       <div class="card-body">
         <div class="card-text">
-          <h5><strong>
-            <%= @post.title %>
-          </strong></h5>
-            <%= link_to "口コミ投稿", post_reviews_path(@post) %>
+          <h2><strong><%= @post.title %></strong></h2>
         </div>
-          <div class="card-text">
+          <div class="card-text text-right">
             <div id="post_<%= @post.id %>">
               <%= render 'post' %>
             </div>
+            <%= link_to "口コミを書く", post_reviews_path(@post) ,class: 'btn btn-primary'%>
           </div>
       </div>
       
-      <div>
-        <%= link_to "店舗詳細" ,post_path(@post)%>
-        <%= link_to "雀活" ,post_comments_path(@post)%>
+      <div class="ml-4">
+        <h5>
+          <%= link_to "お店情報" ,post_path(@post)%>
+          <%= link_to "雀活" ,post_comments_path(@post)%>
+        </h5>
+        <hr>
       </div>
       
       
     <img class="card-img-top" width="100%" height="300"  src="<%= @post.image %>">
-    <div class="card-body">
-      <h5>
-        コメント一覧
-      </h5>
-      <div class="form-group">
+    <div class="card-body mt-5">
+      <div class="form-group mb-5">
         <%= form_with model:[@post, @comment] do |form|  %>
-        <%= form.text_area :content ,class:"form-control"%>
+        <%= form.text_area :content ,class:"form-control",placeholder:"今日は役満振り込んだ。オワタ。。。",required: true %>
         <%= form.hidden_field :post_id, :value => params[:post_id] %>
-        <%= form.submit "つぶやく",class:"btn btn-primary"%>
+        <%= form.submit "つぶやく",class:"btn btn-primary mt-2"%>
         <% end %>
       </div>
+      <h4>
+        【コメント一覧】
+      </h4>
       <div>
         <% @comments.each do |comment| %>
           <p><hr>
@@ -45,4 +45,4 @@
       </div>
     </div>
   </div>
-</div> 
+
