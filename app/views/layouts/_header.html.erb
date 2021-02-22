@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   
-  
+   <!--ロゴ-->
+  <a class="navbar-brand" href="/"><img height="50" src="/images/logo_transparent2.png" ></a>  
   
   <!--スマホ用ドロップダウン-->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,12 +9,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-  <!--ロゴ-->
-    <ul class="navbar-nav mr-auto">      
-      <li class="nav-item">
-        <a href="/"><img  height="40" src="/images/logo_transparent2.png"></a>
-      </li>
-    </ul>
+  
   <!-- ログイン時 -->
     <% if user_signed_in? %>  
       <ul class="navbar-nav">      
