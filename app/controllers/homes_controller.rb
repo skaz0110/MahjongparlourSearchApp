@@ -27,7 +27,7 @@ class HomesController < ApplicationController
   end
 
   # 1ページの表示数
-  PER_PAGE = 9
+  PER_PAGE = 5
 
   def index
       # ページネーション

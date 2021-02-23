@@ -1,5 +1,6 @@
 <!--個人の口コミ表示星評価-->
 <% @reviews.each do |review| %> 
+  <hr>
     <%= review.user.username %>
       <div id="star-rate-<%= review.id %>"></div>
         <script>

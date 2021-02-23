@@ -1,26 +1,27 @@
-<h5>お気に入り</h5>
+<div class="container mt-5">
+<h5>【お気に入り一覧】</h5>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">店名</th>
+        <th scope="col">お店の紹介</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @likes.each.with_index(1) do |like,index|%>
+      <% post = Post.find(like.post_id) %>
+      <%= link_to post_path(post) ,class: "Editlink" do%>
+        <tr>
+          <th scope="row"><%= index%></th>
+          <td><%= post.title%></td>
+          <td><%= post.content.truncate(50)%></td>
+        </tr>
+      <%end%>
+      <%end%>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-<table class="table table-hover table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">店名</th>
-      <th scope="col">お店の紹介</th>
-      <th scope="col">口コミ</th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @likes.each.with_index(1) do |like,index|%>
-  <% post = Post.find(like.post_id) %>
-  <%= link_to post_path(post) ,class: "Editlink" do%>
-    <tr>
-      <th scope="row"><%= index%></th>
-      <td><%= post.title%></td>
-      <td><%= post.content.truncate(50)%></td>
-      <td>星５</td>
-    </tr>
-  <%end%>
-  <%end%>
-  </tbody>
-</table>
 <%= link_to 'Twitter', "https://twitter.com/share?url=#{request.url}", title: 'Twitter', target: '_blank' %>
