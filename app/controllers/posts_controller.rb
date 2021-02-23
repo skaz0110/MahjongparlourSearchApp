@@ -11,7 +11,7 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
         
         # 投稿詳細に関連付けてあるコメントを全取得
-        @reviews = @post.reviews  
+        @reviews = @post.reviews
         
         # 投稿詳細画面でコメントの投稿を行うので、formのパラメータ用にReviewオブジェクトを取得
         @review = current_user.reviews.new  
