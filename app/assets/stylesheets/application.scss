@@ -35,11 +35,6 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
   color: black ;
 }
 
-/* フッターと要素が被ることを防ぐ */
-body {
-  padding-bottom: 70px;
-}
-
 .pagination>li>a {          
   border: none;     /*枠線をなくす*/
   color: #696969;   /*文字の色を変える*/
@@ -91,7 +86,7 @@ body {
 // 全ページの背景
 body {
 	background-color:#EEEEEE	;		/*ページ全体の背景色*/
-  font-family: 'Osaka';
+  font-family: 'Osaka';   
 }
 
 // Youtube動画

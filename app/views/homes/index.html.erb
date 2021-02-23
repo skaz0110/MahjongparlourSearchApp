@@ -55,6 +55,7 @@
 <%
 =end%>
 
+<!--
 <div class="container" style="margin-bottom:100px;">
   <h3>Mリーグ最新動画</h3>
   <div class="border rounded" style="padding:50px;background-color:white;">
@@ -66,10 +67,11 @@
     </div>
   </div>
 </div> 
+-->
 
 
 <!-- youtube動画 -->
-<div class="container">
+<div class="container mb-5">
   <h3>新着雀活</h3>
     <div class="border rounded" style="padding:50px;background-color:white;">
       <% @comments.each do |comment| %>
@@ -83,4 +85,7 @@
           <%= comment.content %>
       <% end %>
     </div>
+</div>
+<div>
+<img src="/assets/footerimage" class="img-fluid"　width="50%" height="50%" alt="犬">
 </div>
