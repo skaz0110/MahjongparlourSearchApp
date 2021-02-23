@@ -1,126 +1,67 @@
 <div class="container mt-5">
   <div class="card w-100" style="width: 18rem;padding:30px;">
+    <%= render 'postshowtop'%>
     <div class="card-body">
-      <div class="card-text">
-        <h2><strong><%= @post.title %></strong></h2>
-      </div>
-      <div class="card-text">
-        口コミ<%= @post.reviews.count%>件/<%=@post.reviews.average(:star).to_f.round(1)%>
-          <!--星評価-->
-            <div id="star-rate-<%= @post.id %>"></div>
-              <script>
-                $('#star-rate-<%= @post.id %>').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn :  '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: true,
-                readOnly: true,
-                score: `<%= @post.reviews.average(:star).to_f.round(1) %>`,
-                })
-              </script> 
-          <!--/星評価-->
-      </div>
-      <div class="card-text text-right">
-        <div id="post_<%= @post.id %>">
-          <%= render 'post' %>
+      <strong><h4>【お店のコメント】</h4></strong>
+        <p class="card-text mb-5"><%= @post.content %></p>
+
+      <h4 class="mb-4">【店舗詳細】</h4>
+      <div class="row">
+        <div class="col-xs-12 col-md-6 mb-4">
+          <img src="<%= @post.image %>" class="rounded mx-auto d-block" style="max-width: 100%;" alt="...">
         </div>
-        <%= link_to "口コミを書く", post_reviews_path(@post.id),class: 'btn btn-primary' %>
+        <div class="col-xs-12 col-md-6">
+          <table class="table">
+            <tbody>
+              <tr>
+                <th scope="row">店舗名</th>
+                <td><%= @post.title %></td>
+              </tr>
+              <tr>
+              <tr>
+                <th scope="row">住所</th>
+                <td><%= @post.address %></td>
+              </tr>
+              <tr>
+                <th scope="row">電話番号</th>
+                <td><%= @post.phonenumber %></td>
+              </tr>
+              <tr>
+                <th scope="row">アクセス</th>
+                <td><%= @post.access %></td>
+              </tr>
+              <tr>
+                <th scope="row">営業時間</th>
+                <td><%= @post.openinghours %></td>
+              </tr>
+              <tr>
+                <th scope="row">定休日</th>
+                <td><%= @post.regularholiday %></td>
+              </tr>
+              <tr>
+                <th scope="row">ゲーム代（セット）</th>
+                <td><%= @post.gamefree %></td>
+              </tr>
+              <tr>
+                <th scope="row">ゲーム代（フリー）</th>
+                <td><%= @post.gameset %></td>
+              </tr>
+            </tbody>
+          </table>    
+        </div>  
       </div>
-    </div>
-    
-    <div class="ml-4">
-      <h5>
-        <%= link_to "お店情報" ,post_path%>
-        <%= link_to "雀活" ,post_comments_path(@post)%>
-      </h5>
-      <hr>
-    </div>
-  <div class="card-body">
-    <strong><h4>【お店のコメント】</h4></strong>
-      <p class="card-text mb-5"><%= @post.content %></p>
 
-    <h4>【店舗詳細】</h4>
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
-        <img src="<%= @post.image %>" class="rounded mx-auto d-block" alt="...">
+      <div class="border col-12">
+        <br>
+          <h5>【口コミ一覧】</h5>
+          <div class="row text-center">
+              <div class="col-md">
+                <%= render 'reviewstar' %>
+              </div>
+          </div>
+        <br>
       </div>
-      <div class="col-xs-12 col-md-6">
-        <table class="table">
-          <tbody>
-            <tr>
-              <th scope="row">店舗名</th>
-              <td><%= @post.title %></td>
-            </tr>
-            <tr>
-            <tr>
-              <th scope="row">住所</th>
-              <td><%= @post.address %></td>
-            </tr>
-            <tr>
-              <th scope="row">電話番号</th>
-              <td><%= @post.phonenumber %></td>
-            </tr>
-            <tr>
-              <th scope="row">アクセス</th>
-              <td><%= @post.access %></td>
-            </tr>
-            <tr>
-              <th scope="row">営業時間</th>
-              <td><%= @post.openinghours %></td>
-            </tr>
-            <tr>
-              <th scope="row">定休日</th>
-              <td><%= @post.regularholiday %></td>
-            </tr>
-            <tr>
-              <th scope="row">ゲーム代（セット）</th>
-              <td><%= @post.gamefree %></td>
-            </tr>
-            <tr>
-              <th scope="row">ゲーム代（フリー）</th>
-              <td><%= @post.gameset %></td>
-            </tr>
-          </tbody>
-        </table>    
-      </div>  
-    </div>
-
-    <div class="border col-12">
-        <br>
-        <h5>【口コミ一覧】</h5>
-        <div class="row text-center">
-            <div class="col-md">
-                <% @reviews.each do |review| %> 
-                  <p>  
-                    <%= review.user.username %>
-                    <%= review.content %>
-                    <%= review.star%>
-
-                    <!--星評価-->
-                    <div id="star-rate-<%= review.id %>"></div>
-                      <script>
-                      $('#star-rate-<%= review.id %>').raty({
-                        size: 36,
-                        starOff:  '<%= asset_path('star-off.png') %>',
-                        starOn :  '<%= asset_path('star-on.png') %>',
-                        starHalf: '<%= asset_path('star-half.png') %>',
-                        half: true,
-                        readOnly: true,
-                        score: `<%= review.star %>`,
-                      })
-                      </script> 
-                    <!--/星評価-->
-                    <% #ログインユーザーとコメントを書いたユーザーが一致すれば表示 %>
-                    <% if current_user.id == review.user_id %>
-                      <%= link_to '削除', post_review_path(review.post.id, review.id) , method: :delete %>
-                      <%= link_to '編集', edit_post_review_path(review.post.id,review.id) %>
-                    <% end  %>                
-                  </p>
-                <% end %>
-            </div>
-        </div>
-        <br>
     </div>
   </div>
 </div>
+

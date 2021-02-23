@@ -35,7 +35,7 @@ class HomesController < ApplicationController
       @posts = @q.result.page(params[:page]).per(PER_PAGE)
       
       # 動画を取得
-      @youtube_data = find_videos('M.LEAGUE [プロ麻雀リーグ]')
+      # @youtube_data = find_videos('M.LEAGUE [プロ麻雀リーグ]')
 
       @comments = Comment.all.order(id: "DESC").limit(5)
   

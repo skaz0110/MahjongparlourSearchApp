@@ -37,8 +37,10 @@
 
 
 <!-- youtube動画 -->
-<!--
-<div class="container" style="margin-bottom:150px;">
+
+<%
+=begin%>
+ <div class="container" style="margin-bottom:150px;">
   <h3>Mリーグ最新動画</h3>
     <div class="border rounded" style="padding:50px;background-color:white;">
       <% @youtube_data.items.each do |item| %>
@@ -49,8 +51,10 @@
         <h4 style="padding:30px;"><%= snippet.title %></h4>
       <% end %>
     </div>
-</div>
--->
+</div> 
+<%
+=end%>
+
 
 <!-- youtube動画 -->
 <div class="container">

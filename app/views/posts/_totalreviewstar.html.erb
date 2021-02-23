@@ -1,0 +1,14 @@
+<!--星評価-->
+<div id="star-rate-<%= @post.id %>"></div>
+<script>
+    $('#star-rate-<%= @post.id %>').raty({
+    size: 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn :  '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    half: true,
+    readOnly: true,
+    score: `<%= @post.reviews.average(:star).to_f.round(1) %>`,      
+    })
+</script> 
+  

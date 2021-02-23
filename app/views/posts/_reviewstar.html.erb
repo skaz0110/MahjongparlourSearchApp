@@ -1,0 +1,26 @@
+<!--個人の口コミ表示星評価-->
+<% @reviews.each do |review| %> 
+  <p>  
+    <%= review.user.username %>
+    <%= review.content %>
+    <%= review.star%>
+      <div id="star-rate-<%= review.id %>"></div>
+        <script>
+          $('#star-rate-<%= review.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn :  '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: `<%= review.star %>`,
+          })
+        </script> 
+  <!--/星評価-->
+   <% #ログインユーザーとコメントを書いたユーザーが一致すれば表示 %>
+  <% if current_user.id == review.user_id %>
+    <%= link_to '削除', post_review_path(review.post.id, review.id) , method: :delete %>
+        <%= link_to '編集', edit_post_review_path(review.post.id,review.id) %>
+      <% end  %>                
+    </p>
+  <% end %>

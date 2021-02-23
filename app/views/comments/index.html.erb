@@ -1,26 +1,6 @@
   <div class="container mt-5">
     <div class="card w-100 " style="width: 18rem;padding:30px;">
-      <div class="card-body">
-        <div class="card-text">
-          <h2><strong><%= @post.title %></strong></h2>
-        </div>
-          <div class="card-text text-right">
-            <div id="post_<%= @post.id %>">
-              <%= render 'post' %>
-            </div>
-            <%= link_to "口コミを書く", post_reviews_path(@post) ,class: 'btn btn-primary'%>
-          </div>
-      </div>
-      
-      <div class="ml-4">
-        <h5>
-          <%= link_to "お店情報" ,post_path(@post)%>
-          <%= link_to "雀活" ,post_comments_path(@post)%>
-        </h5>
-        <hr>
-      </div>
-      
-      
+      <%= render 'posts/postshowtop'%> 
     <img class="card-img-top" width="100%" height="300"  src="<%= @post.image %>">
     <div class="card-body mt-5">
       <div class="form-group mb-5">
