@@ -81,6 +81,8 @@ test:
 #
 production:
   <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: BathSearchApp_production
   username: BathSearchApp
   password: <%= ENV['BATHSEARCHAPP_DATABASE_PASSWORD'] %>
