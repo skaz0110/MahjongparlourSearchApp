@@ -7,31 +7,32 @@
 </div>
 
 <div class="container mt-5">
-  <div class="border rounded" style="padding:50px;background-color:white;margin-bottom:100px;"> 
-    <div class="row ">
-      <% @posts.each do |post|%>
-        <div class="col-12 col-md-6 col-lg-4 mb-4">
-          <%= link_to post_path(post) ,class: "Editlink" do%>
-            <div class="card border-dark h-100">
-              <img class="card-img-top" src="<%= post.image %>">
-              <div class="card-body">
-                <div class="card-title">
-                  <h5><%= post.title%></h5>
+  <h3>新着雀荘</h3>  
+    <div class="border rounded" style="padding:50px;background-color:white;margin-bottom:100px;"> 
+      <div class="row">
+        <% @posts.each do |post|%>
+          <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <%= link_to post_path(post) ,class: "Editlink" do%>
+              <div class="card border-dark h-100">
+                <img class="card-img-top" src="<%= post.image %>">
+                <div class="card-body">
+                  <div class="card-title">
+                    <h5><%= post.title%></h5>
+                  </div>
+                  <p class="card-text">
+                    <%= post.content.truncate(100)%>
+                  </p>  
                 </div>
-                <p class="card-text">
-                  <%= post.content.truncate(100)%>
-                </p>  
-              </div>
-            </div>  
-          <%end%>
-        </div>
-      <%end%>
-    </div>
-    <!-- ページネーション -->
-      <div class="mx-auto" style="width: 200px;">
-        <%= paginate @posts %>
+              </div>  
+            <%end%>
+          </div>
+        <%end%>
       </div>
-  </div>
+      <!-- ページネーション -->
+        <div class="mx-auto" style="width: 200px;">
+          <%= paginate @posts %>
+        </div>
+    </div>
 </div>
 
 
