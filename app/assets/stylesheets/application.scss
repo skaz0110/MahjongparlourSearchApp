@@ -103,3 +103,16 @@ body {
      width: 100%;
      height: 100%;
 }
+
+// ヘッダーに影を付ける
+header.sticky-top {
+  box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+}
+
+// ボーダーとカードのに影を付ける
+.border.rounded {
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
+}
+.card.w-100{
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2); 
+} 
