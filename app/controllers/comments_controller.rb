@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     
     # 投稿詳細に関連付けてあるコメントを全取得
-    @comments = @post.comments
+    @comments = @post.comments.order(created_at: :desc)
     @comment = current_user.comments.new  
   end
 
