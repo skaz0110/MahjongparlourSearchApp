@@ -14,5 +14,9 @@ Rails.application.routes.draw do
     resources :reviews,   only: [:index,:create,:destroy,:edit,:update]
     resources :comments,  only: [:index,:create,:destroy,:edit,:update]
   end
+
+  resource :contacts, only: [:new, :create] do
+    get "/thanks" => "contacts#thanks"
+  end
    
 end
