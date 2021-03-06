@@ -56,22 +56,22 @@
 <%
 =end%>
 
-<!--
+
 <div class="container" style="margin-bottom:100px;">
   <h3>Mリーグ最新動画</h3>
   <div class="border rounded" style="padding:50px;background-color:white;">
     <div class="youtube mb-5">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/V1WQ6aGdYns" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/V1WQ6aGdYns" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
     </div>
     <div class="youtube">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/mmlz9sg4_zY?start=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/mmlz9sg4_zY?start=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
     </div>
-  </div>
+  </div>  
 </div> 
--->
 
 
-<!-- youtube -->
+
+<!-- 新着のコメント -->
 <div class="container mb-5">
   <h3>新着雀活</h3>
     <div class="border rounded" style="padding:50px;background-color:white;">
@@ -85,5 +85,15 @@
           <p>【<%= comment.post.title%>】</p>
           <%= comment.content %>
       <% end %>
+    </div>
+</div>
+
+<div class="container mb-5">
+  <h3>麻雀ニュース</h3>
+    <div class="border rounded" style="padding:50px;background-color:white;">
+      <p><a href="https://mj-news.net/news/mleague/20210306156452">3/5 Mリーグ2020 結果】ABEMAS・多井、サクラナイツ・内川が勝利！上位チームが更にポイントを伸ばす！！</a></p>
+      <p><a href="https://mj-news.net/news/saikyousen/20210216155825">麻雀最強戦2021アシスタントに元乃木坂46の中田花奈！最強戦ガールには杉浦まゆ、美里麻が就任！</a></p>
+      <p><a href="https://mj-news.net/news/mondo-tv/20210219155970">第21回モンド杯大好評放送中！Mリーガー7名をはじめとするトッププロ12名の出場選手、アンケート紹介！</a></p>
+      <p><a href="https://mj-news.net/news/mleague/20210305156441">滝沢 VS 堀 VS 多井 VS 萩原 3位、2位、1位、6位のチームの戦い！雷電にとっては負けられないセミファイナルに向けての最終局面！【Mリーグ2020 3/5 第1試合メンバー】</a></p>
     </div>
 </div>
