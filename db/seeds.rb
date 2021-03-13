@@ -1,6 +1,6 @@
 # 削除
 # User.destroy_all
-# User.last.destroy
+ User.last.destroy
 # Review.destroy_all
 # Post.destroy_all
 # ShopDetail.destroy_all
@@ -32,5 +32,5 @@
 # ShopDetail.create!(address: "渋谷区",phonenumber: "090",access: "渋谷駅から北に２分",openinghours: "オープン〜ラスト",regularholiday: "土曜",gamefree: "５００円",gameset: "３００円")
 # ShopDetail.create!(address: "川崎市",phonenumber: "0120",access: "川崎駅から北に２分",openinghours: "オープン〜ラスト",regularholiday: "日曜",gamefree: "６００円",gameset: "２００円")
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+#AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 puts "初期データの投入に成功しました！"

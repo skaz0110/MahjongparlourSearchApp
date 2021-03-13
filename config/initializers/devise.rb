@@ -15,7 +15,8 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '97a2fb7de0ff424d07bacc197ae5025d5f18eeedc7548fbae6bdf8c891bb0679754f52ba6c0bf7a99386fe4b0b7976206cf5d6f7efb3dc0e06de4745f3e6e904'
-
+  config.omniauth :twitter, ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET'], scope: 'email', oauth_callback: "#{ENV['DOMAIN_NAME']}/users/auth/twitter/callback"
+  OmniAuth.config.logger = Rails.logger if Rails.env.development? # debug用
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'

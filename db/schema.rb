@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_130625) do
+ActiveRecord::Schema.define(version: 2021_03_13_063022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,16 +57,6 @@ ActiveRecord::Schema.define(version: 2021_03_02_130625) do
     t.text "content", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "favorites", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "post_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_favorites_on_post_id"
-    t.index ["user_id", "post_id"], name: "index_favorites_on_user_id_and_post_id", unique: true
-    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -128,19 +118,14 @@ ActiveRecord::Schema.define(version: 2021_03_02_130625) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
     t.string "username"
+    t.string "uid"
+    t.string "provider"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "youtubes", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "favorites", "posts"
-  add_foreign_key "favorites", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "reviews", "posts"
   add_foreign_key "reviews", "users"

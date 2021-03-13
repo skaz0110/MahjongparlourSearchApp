@@ -10,8 +10,11 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
   
+         # 外部API認証用に以下追加
+         :omniauthable, omniauth_providers: [:facebook, :twitter, :google_oauth2]
+
   ##  いいねが存在しているかをチェック
   def liked_by?(post_id)
     likes.where(post_id: post_id).exists?
@@ -25,4 +28,27 @@ class User < ApplicationRecord
       # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
     end
   end
+
+  # Twitter認証ログイン用
+# ユーザーの情報があれば探し、無ければ作成する
+def self.find_for_oauth(auth)
+  user = User.find_by(uid: auth.uid, provider: auth.provider)
+
+  user ||= User.create!(
+    uid: auth.uid,
+    provider: auth.provider,
+    username: auth[:info][:name],
+    remote_image_url:    auth[:info][:image],
+    email: User.dummy_email(auth),
+    password: Devise.friendly_token[0, 20]
+    
+  )
+
+  user
+end
+
+def self.dummy_email(auth)
+  "#{Time.now.strftime('%Y%m%d%H%M%S').to_i}-#{auth.uid}-#{auth.provider}@example.com"
+end
+
 end
