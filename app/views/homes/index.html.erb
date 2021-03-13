@@ -1,99 +1,158 @@
+<!-- ログイン時 -->
+<% if user_signed_in? %>
 
-<div class="mx-auto" style="width: 400px;margin-top:70px;" >
-  <%= search_form_for @q ,url: root_path do |f| %>
-    <%= f.search_field :title_cont ,class:"form-control mr-sm-2"%>
-    <%= f.submit ("検索"),class:"btn btn-outline-success my-2 my-sm-0"%>
-  <% end %>
-</div>
+  <div class="mx-auto" style="width: 400px;margin-top:70px;" >
+    <%= search_form_for @q ,url: root_path do |f| %>
+      <%= f.search_field :title_cont ,class:"form-control mr-sm-2"%>
+      <%= f.submit ("検索"),class:"btn btn-outline-success my-2 my-sm-0"%>
+    <% end %>
+  </div>
 
-<div class="container mt-5">
-  <h3>新着雀荘</h3>  
-    <div class="border rounded" style="padding:50px;background-color:white;margin-bottom:100px;"> 
-      <div class="row">
-        <% @posts.each do |post|%>
-          <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <%= link_to post_path(post) ,class: "Editlink" do%>
-              <div class="card border-dark h-100">
-                <img class="card-img-top" src="<%= post.image %>">
-                <div class="card-body">
-                  <div class="card-title">
-                    <h5><%= post.title%></h5>
+  <div class="container mt-5">
+    <h3>新着雀荘</h3>  
+      <div class="border rounded" style="padding:50px;background-color:white;margin-bottom:100px;"> 
+        <div class="row">
+          <% @posts.each do |post|%>
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+              <%= link_to post_path(post) ,class: "Editlink" do%>
+                <div class="card border-dark h-100">
+                  <img class="card-img-top" src="<%= post.image %>">
+                  <div class="card-body">
+                    <div class="card-title">
+                      <h5><%= post.title%></h5>
+                    </div>
+                    <p class="card-text">
+                      <%= post.content.truncate(100)%>
+                    </p>  
                   </div>
-                  <p class="card-text">
-                    <%= post.content.truncate(100)%>
-                  </p>  
-                </div>
-              </div>  
-            <%end%>
-          </div>
-        <%end%>
-      </div>
-      <!-- ページネーション -->
-        <div class="mx-auto" style="width: 200px;">
-          <%= paginate @posts %>
+                </div>  
+              <%end%>
+            </div>
+          <%end%>
         </div>
-    </div>
-</div>
+        <!-- ページネーション -->
+          <div class="mx-auto" style="width: 200px;">
+            <%= paginate @posts %>
+          </div>
+      </div>
+  </div>
 
 
 
-<!-- youtube動画 -->
+  <!-- youtube動画 -->
 
-<%
+  
+  <%
 =begin%>
  <div class="container" style="margin-bottom:150px;">
-  <h3>Mリーグ最新動画</h3>
-    <div class="border rounded" style="padding:50px;background-color:white;">
-      <% @youtube_data.items.each do |item| %>
-        <% snippet = item.snippet %>
-          <div class="youtube">
-            <iframe src="https://www.youtube.com/embed/<%= item.id.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        <h4 style="padding:30px;"><%= snippet.title %></h4>
-      <% end %>
-    </div>
-</div> 
+    <h3>Mリーグ最新動画</h3>
+      <div class="border rounded" style="padding:50px;background-color:white;">
+        <% @youtube_data.items.each do |item| %>
+          <% snippet = item.snippet %>
+            <div class="youtube">
+              <iframe src="https://www.youtube.com/embed/<%= item.id.video_id %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          <h4 style="padding:30px;"><%= snippet.title %></h4>
+        <% end %>
+      </div>
+  </div>  
 <%
 =end%>
 
 
-<div class="container" style="margin-bottom:100px;">
-  <h3>Mリーグ最新動画</h3>
-  <div class="border rounded" style="padding:50px;background-color:white;">
-    <div class="youtube mb-5">
-      <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/V1WQ6aGdYns" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-    </div>
-    <div class="youtube">
-      <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/mmlz9sg4_zY?start=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-    </div>
-  </div>  
+
+  <div class="container" style="margin-bottom:100px;">
+    <h3>Mリーグ最新動画</h3>
+    <div class="border rounded" style="padding:50px;background-color:white;">
+      <div class="youtube mb-5">
+        <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/V1WQ6aGdYns" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+      </div>
+      <div class="youtube">
+        <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/mmlz9sg4_zY?start=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+      </div>
+    </div>  
+  </div> 
+
+
+
+  <!-- 新着のコメント -->
+  <div class="container mb-5">
+    <h3>新着雀活</h3>
+      <div class="border rounded" style="padding:50px;background-color:white;">
+        <% @comments.each do |comment| %>
+          <p>
+            <hr>
+              <img  height="40" src="<%= comment.user.image %>">
+              <%= comment.user.username %>
+              <%= l comment.created_at %>
+          </p>
+            <p>【<%= comment.post.title%>】</p>
+            <%= comment.content %>
+        <% end %>
+      </div>
+  </div>
+
+  <div class="container mb-5">
+    <h3>麻雀ニュース</h3>
+      <div class="border rounded" style="padding:50px;background-color:white;">
+        <p><a href="https://mj-news.net/news/mleague/20210306156452">3/5 Mリーグ2020 結果】ABEMAS・多井、サクラナイツ・内川が勝利！上位チームが更にポイントを伸ばす！！</a></p>
+        <p><a href="https://mj-news.net/news/saikyousen/20210216155825">麻雀最強戦2021アシスタントに元乃木坂46の中田花奈！最強戦ガールには杉浦まゆ、美里麻が就任！</a></p>
+        <p><a href="https://mj-news.net/news/mondo-tv/20210219155970">第21回モンド杯大好評放送中！Mリーガー7名をはじめとするトッププロ12名の出場選手、アンケート紹介！</a></p>
+        <p><a href="https://mj-news.net/news/mleague/20210305156441">滝沢 VS 堀 VS 多井 VS 萩原 3位、2位、1位、6位のチームの戦い！雷電にとっては負けられないセミファイナルに向けての最終局面！【Mリーグ2020 3/5 第1試合メンバー】</a></p>
+      </div>
+  </div>
+
+<!-- 非ログイン時 -->
+<% else %>
+
+
+<%
+=begin%>
+ <div>
+  <img src="/assets/PAK57_paiwouragaeshisi-pai" class="img-fluid w-100"　alt="麻雀">
 </div> 
+<%
+=end%>
 
-
-
-<!-- 新着のコメント -->
-<div class="container mb-5">
-  <h3>新着雀活</h3>
-    <div class="border rounded" style="padding:50px;background-color:white;">
-      <% @comments.each do |comment| %>
-        <p>
-          <hr>
-            <img  height="40" src="<%= comment.user.image %>">
-            <%= comment.user.username %>
-            <%= l comment.created_at %>
-        </p>
-          <p>【<%= comment.post.title%>】</p>
-          <%= comment.content %>
-      <% end %>
-    </div>
+<div class="card" style="max-width: 100%;">
+  <img class="card-img" src="/assets/PAK57_paiwouragaeshisi-pai" alt="">
+  <div class="card-img-overlay text-center"style="margin-top:200px;">
+    <img height="150" src="/images/logo_transparent2.png" >  
+    <p class="text-center">as中央</p>
+    <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+    <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path,  method: :post,class: "nav-link" %> 
+    
+  </div>
 </div>
 
-<div class="container mb-5">
-  <h3>麻雀ニュース</h3>
-    <div class="border rounded" style="padding:50px;background-color:white;">
-      <p><a href="https://mj-news.net/news/mleague/20210306156452">3/5 Mリーグ2020 結果】ABEMAS・多井、サクラナイツ・内川が勝利！上位チームが更にポイントを伸ばす！！</a></p>
-      <p><a href="https://mj-news.net/news/saikyousen/20210216155825">麻雀最強戦2021アシスタントに元乃木坂46の中田花奈！最強戦ガールには杉浦まゆ、美里麻が就任！</a></p>
-      <p><a href="https://mj-news.net/news/mondo-tv/20210219155970">第21回モンド杯大好評放送中！Mリーガー7名をはじめとするトッププロ12名の出場選手、アンケート紹介！</a></p>
-      <p><a href="https://mj-news.net/news/mleague/20210305156441">滝沢 VS 堀 VS 多井 VS 萩原 3位、2位、1位、6位のチームの戦い！雷電にとっては負けられないセミファイナルに向けての最終局面！【Mリーグ2020 3/5 第1試合メンバー】</a></p>
+
+<div class="container-fluid mt-5">
+  <div class="card-deck">
+    <div class="card">
+      <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
     </div>
+    <div class="card">
+      <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
 </div>
+
+<% end %>
