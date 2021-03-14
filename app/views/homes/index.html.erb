@@ -2,7 +2,7 @@
 <% if user_signed_in? %>
 
   <div class="mx-auto" style="width: 400px;margin-top:70px;" >
-    <%= search_form_for @q ,url: root_path do |f| %>
+    <%= search_form_for @q ,url: posts_path do |f| %>
       <%= f.search_field :title_cont ,class:"form-control mr-sm-2"%>
       <%= f.submit ("検索"),class:"btn btn-outline-success my-2 my-sm-0"%>
     <% end %>
@@ -105,15 +105,6 @@
 <!-- 非ログイン時 -->
 <% else %>
 
-
-<%
-=begin%>
- <div>
-  <img src="/assets/PAK57_paiwouragaeshisi-pai" class="img-fluid w-100"　alt="麻雀">
-</div> 
-<%
-=end%>
-
 <div class="card" style="max-width: 100%;">
   <img class="card-img" src="/assets/PAK57_paiwouragaeshisi-pai" alt="">
   <div class="card-img-overlay text-center"style="margin-top:200px;">
@@ -158,3 +149,4 @@
 </div>
 
 <% end %>
+
