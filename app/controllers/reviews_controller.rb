@@ -21,6 +21,14 @@ class ReviewsController < ApplicationController
     end
   end
 
+
+
+  def update
+    
+  end
+  
+  
+
   def destroy
     Review.find_by(id: params[:id],post_id: params[:post_id]).destroy
     redirect_back(fallback_location: root_path)
@@ -28,6 +36,7 @@ class ReviewsController < ApplicationController
   
   def edit
     @review =Review.find_by(id: params[:id],post_id: params[:post_id])
+    
     
   end
   
