@@ -38,14 +38,19 @@ class HomesController < ApplicationController
       @posts = @q.result.page(params[:page]).per(PER_PAGE)
       
       # 動画を取得
-      # @youtube_data = find_videos('M.LEAGUE [プロ麻雀リーグ]')
+      @youtube_data = find_videos('M.LEAGUE [プロ麻雀リーグ]')
 
+      # 最新のコメントを５件取得取得
       @comments = Comment.all.order(id: "DESC").limit(5)
       
-      agent = Mechanize.new                  #agentは任意の変数
-    page = agent.get("http://hoge.com")  #pageは任意の変数 getの引数はサイトのURL
-    @elements = page.search('title') #div.idxcol aは取得したい要素  elementsは任意の変数
-    
+      # スクレイピング
+      agent = Mechanize.new                  
+      page = agent.get("https://jan39.com/news/") 
+      # ニュースを３件取得
+      @firstnews  = page.links[88]
+      @secondnews = page.links[92]
+      @thirdnews  = page.links[97]
+     
      
   end
   
