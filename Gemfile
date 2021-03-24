@@ -64,9 +64,14 @@ gem 'google-api-client', '~> 0.11'
 # 環境変数を管理
 gem 'dotenv-rails'
 
+# TwitterAPI
 gem 'omniauth', '1.9.1'
 
+# TwitterAPI
 gem 'omniauth-twitter'
+
+# スクレイピング
+gem 'mechanize'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

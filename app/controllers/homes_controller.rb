@@ -5,6 +5,8 @@ class HomesController < ApplicationController
   require 'google/apis/youtube_v3'
   require 'active_support/all'
   
+  
+  
   GOOGLE_API_KEY = "AIzaSyA3Z2MVyChn2wavCxawDBDhkK8yMup8its"
 
   def find_videos(keyword, after: 1.months.ago, before: Time.now)
@@ -29,6 +31,7 @@ class HomesController < ApplicationController
   # 1ページの表示数
   PER_PAGE = 5
 
+    
   def index
       # ページネーション
       @q = Post.ransack(params[:q])
@@ -38,7 +41,12 @@ class HomesController < ApplicationController
       # @youtube_data = find_videos('M.LEAGUE [プロ麻雀リーグ]')
 
       @comments = Comment.all.order(id: "DESC").limit(5)
-  
+      
+      agent = Mechanize.new                  #agentは任意の変数
+    page = agent.get("http://hoge.com")  #pageは任意の変数 getの引数はサイトのURL
+    @elements = page.search('title') #div.idxcol aは取得したい要素  elementsは任意の変数
+    
+     
   end
   
 end
