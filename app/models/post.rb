@@ -6,9 +6,9 @@ class Post < ApplicationRecord
     has_many :comments, dependent: :destroy
 
     # バリデーション
-    validates :title,   presence: true, length: { in: 1..50 }
-    validates :content, presence: true, length: { in: 20..500 }
-    validates :address, presence: true, length: { in: 5..200 }
+    validates :title,   presence: true, length: { maximum: 30 } 
+    validates :content, presence: true, length: { maximum: 500 }
+    validates :address, presence: true, length: { maximum: 100 }
     
   # 画像用
     mount_uploader :image, ImageUploader

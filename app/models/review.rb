@@ -4,7 +4,7 @@ class Review < ApplicationRecord
 
   # レビューのコメントは５字〜１００字
   #
-  validates :content, presence: true, length: { in: 5..100 }
+  validates :content, presence: true, length: { maximum: 100 }
   validates :star,    presence: true
 
   def reviewed_by?(user)
