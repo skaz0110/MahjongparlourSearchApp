@@ -63,7 +63,7 @@ class PostsController < ApplicationController
       else
           
           #　コメント送信後は、一つ前のページへリダイレクトさせる。
-          redirect_back(fallback_location: root_path) 
+          render :new
       end
     end
   

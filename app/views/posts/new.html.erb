@@ -8,13 +8,14 @@
     </div>
 
     <%= form_with model: @post do |f|  %>
+    <%= render 'layouts/error_messages', model: f.object %>
         <div class="form-group">
             <%= f.label :title, '店舗名 ' %>
-            <%= f.text_field :title, class: 'form-control',placeholder:"例：　雀荘ホワイト",required: true%>
+            <%= f.text_field :title, class: 'form-control',placeholder:"例：　雀荘ホワイト"%>
         </div>
         <div class="form-group">
             <%= f.label :title, '住所 ' %>
-            <%= f.text_field :address, class: 'form-control' ,placeholder:"例：　東京都港区６丁目7-1",required: true%>
+            <%= f.text_field :address, class: 'form-control' ,placeholder:"例：　東京都港区６丁目7-1"%>
         </div>
         <div class="form-group">
             <%= f.label :phonenumber, '電話番号' %>
@@ -52,11 +53,11 @@
                                                                                         ＜フリー＞
                                                                                         ご新規のお客様　7,200円キャッシュバック！
                                                                                         新規でお越しの際に、12ゲーム分のサービス券をお渡しいたします。
-                                                                                        サービス券は、5ゲームに1回お使いいただけます。すべて使い切るとなんと7,200円のキャッシュバックに！",required: true%>
+                                                                                        サービス券は、5ゲームに1回お使いいただけます。すべて使い切るとなんと7,200円のキャッシュバックに！"%>
         </div>
         <div class="form-group">
             <%= f.label :image, '店舗画像' %>
-            <%= f.file_field :image, class: 'form-control' ,required: true%>
+            <%= f.file_field :image, class: 'form-control' %>
             <small id="poster-tip" class="form-text text-muted">
                 画像を選んでね
             </small>
