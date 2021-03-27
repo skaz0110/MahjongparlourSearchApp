@@ -22,12 +22,20 @@ class PostsController < ApplicationController
 
     end
     
-    def update
-      
+    def update  
       @post = Post.find(params[:id])
-      @post.update(post_params)
-      redirect_to posts_path
+      
+      if @post.update(post_params)
 
+        redirect_to posts_path, notice: "更新しました"
+      
+      else
+        
+        flash.now[:alert] = "更新に失敗しました"
+        # エラーメッセ時を表示する
+        render :edit
+      
+      end
     end
 
     def show
@@ -58,12 +66,13 @@ class PostsController < ApplicationController
       if @post.save
         
           #　コメント送信後は、一つ前のページへリダイレクトさせる。
-          redirect_to post_path(@post)
+          redirect_to post_path(@post), notice: "投稿しました"
         
       else
           
+          flash.now[:alert] = "投稿に失敗しました"
           #　コメント送信後は、一つ前のページへリダイレクトさせる。
-          redirect_back(fallback_location: root_path) 
+          render :new
       end
     end
   
