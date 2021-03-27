@@ -2,10 +2,7 @@
   <div class="alert alert-warning">
     <ul>
       <% model.errors.full_messages.each do |message| %>
-        <div class="alert alert-danger" role="alert">
-          <a href="#" class="close" data-dismiss="alert">×</a>
-          <%= message %>
-        </div>
+        <li><%= message %>
       <% end %>
     </ul>
   </div>

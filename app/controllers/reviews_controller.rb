@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.new  
     
   end
-  
+
   def create
     @review = current_user.reviews.new(review_params)
     
@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
     else
 
       # 一つ前のページへ戻る
+      flash.now[:alert] = "投稿に失敗しました"
       redirect_back(fallback_location: root_path)
     end
   end

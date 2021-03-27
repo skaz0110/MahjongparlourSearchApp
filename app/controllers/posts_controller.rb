@@ -22,12 +22,20 @@ class PostsController < ApplicationController
 
     end
     
-    def update
-      
+    def update  
       @post = Post.find(params[:id])
-      @post.update(post_params)
-      redirect_to posts_path
+      
+      if @post.update(post_params)
 
+        redirect_to posts_path, notice: "更新しました"
+      
+      else
+        
+        flash.now[:alert] = "更新に失敗しました"
+        # エラーメッセ時を表示する
+        render :edit
+      
+      end
     end
 
     def show

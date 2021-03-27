@@ -8,6 +8,7 @@
     </div>
     
     <%= form_with model: @post do |f|  %>
+    <%= render 'layouts/error_messages', model: f.object %>
         <div class="form-group">
             <%= f.label :title, '店舗名 ' %>
             <%= f.text_field :title, class: 'form-control',placeholder:"例：　雀荘ホワイト",required: true%>
