@@ -7,6 +7,7 @@
     </div>
 
     <%= form_with(model:[@post, @review], method: :post) do |f|  %>
+    <%= render 'layouts/error_messages', model: f.object %>
         <div class="form-group row" id="star">
             <%= f.label :star,'初心者オススメ度', class:'col-md-3' %>
             <%= f.hidden_field :star, id: :review_star%>

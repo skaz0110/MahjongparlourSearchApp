@@ -3,7 +3,7 @@ class Review < ApplicationRecord
   belongs_to :post
 
   # レビューのコメントは５字〜１００字
-  # 星は選択必須
+  #
   validates :content, presence: true, length: { in: 5..100 }
   validates :star,    presence: true
 

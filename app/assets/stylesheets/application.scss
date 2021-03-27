@@ -126,7 +126,8 @@ header.sticky-top {
   display: contents;
 
   input,
-  textarea {
+  textarea,
+   {
     @extend .is-invalid;
   }
 } 
