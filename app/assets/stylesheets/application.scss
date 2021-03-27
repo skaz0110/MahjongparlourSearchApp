@@ -121,6 +121,7 @@ header.sticky-top {
   margin: 150px;
 }
 
+// バリデーションエラー時にフィールドを赤色に変更する
 div.field_with_errors {
   display: contents;
 
