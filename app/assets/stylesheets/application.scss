@@ -116,3 +116,29 @@ header.sticky-top {
 .card.w-100{
   box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2); 
 } 
+
+.mx-auto.footer{
+  margin: 150px;
+}
+
+// バリデーションエラー時にフィールドを赤色に変更する
+.field_with_errors {
+  display: contents;
+
+  input,
+  textarea,
+   {
+    @extend .is-invalid;
+  }
+} 
+
+// フラッシュ
+// 成功した時は水色のフラッシュメッセージ
+.alert-notice {
+  @extend .alert-info;
+}
+// 失敗した時は赤色のアラートメッセージ
+.alert-alert {
+  @extend .alert-danger;
+}
+

@@ -83,6 +83,7 @@ production:
   <<: *default
   adapter: postgresql
   encoding: unicode
-  database: BathSearchApp_production
-  username: BathSearchApp
-  password: <%= ENV['BATHSEARCHAPP_DATABASE_PASSWORD'] %>
+  database: mahjongparlour_go_app_production
+  username: postgres
+  password: <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:hostname] %>

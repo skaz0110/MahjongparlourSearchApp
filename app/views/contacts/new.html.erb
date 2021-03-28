@@ -1,0 +1,39 @@
+<div class="text-center mt-5">
+  <p class="h2">お問い合わせ <i class="fa fa-comments " aria-hidden="true"></i>
+</div>
+
+<div class="container mt-5">
+  <%= form_with(model: @contact, local: true) do |f| %>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4">
+        <p class="text-center">メールアドレス</p>
+      </div>
+      <div class="col-md-8">
+        <%= f.email_field :email, autocomplete: "email" ,class:"form-control", placeholder:"必須" %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4">
+        <p class="text-center">お名前</p>
+      </div>
+      <div class="col-md-8">
+        <%= f.text_field :name, autocomplete: "name" ,class:"form-control", placeholder:"必須" %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-4">
+        <p class="text-center">お問い合わせ内容</p>
+      </div>
+      <div class="col-md-8">
+        <%= f.text_area :content,class:"form-control" ,placeholder:"必須",rows:"4" ,scols:"50"%>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-outline-primary">送信</button>
+  <% end %>
+</div>

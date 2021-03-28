@@ -1,0 +1,70 @@
+<div class="card col-sm-8 mx-auto mt-5" >
+
+    <div class="d-flex align-items-center">
+    <h1>情報修正</h1>
+    <div class="ml-auto posts_button">
+        <%= link_to '店舗の詳細ページに戻る', :back , class:"btn btn-outline-info"%>
+    </div>
+    </div>
+    
+    <%= form_with model: @post do |f|  %>
+    <%= render 'layouts/error_messages', model: f.object %>
+        <div class="form-group">
+            <%= f.label :title, '店舗名 ' %>
+            <%= f.text_field :title, class: 'form-control',placeholder:"例：　雀荘ホワイト",required: true%>
+        </div>
+        <div class="form-group">
+            <%= f.label :title, '住所 ' %>
+            <%= f.text_field :address, class: 'form-control' ,placeholder:"例：　東京都港区６丁目7-1",required: true%>
+        </div>
+        <div class="form-group">
+            <%= f.label :phonenumber, '電話番号' %>
+            <%= f.text_field :phonenumber, class: 'form-control',value:"012",disabled:"disabled" %>
+        </div>
+        <div class="form-group">
+            <%= f.label :access, 'お店までのアクセス' %>
+            <%= f.text_field :access, class: 'form-control' ,placeholder:"例：　JR渋谷駅を降りて徒歩５分"%>
+        </div>
+        <div class="form-group">
+            <%= f.label :openinghours, '営業時間' %>
+            <%= f.text_field :openinghours, class: 'form-control' ,placeholder:"例：　AM11:00~AM5:00"%>
+        </div>
+        <div class="form-group">
+            <%= f.label :regularholiday, '定休日' %>
+            <%= f.text_field :regularholiday, class: 'form-control' ,placeholder:"例：　年中無休"%>
+        </div>
+        <div class="form-group">
+            <%= f.label :gamefree, 'ゲーム代（フリー）' %>
+            <%= f.text_field :gamefree, class: 'form-control' ,placeholder:"例：　お1人様1G：350円（条件付き東南戦）"%>
+        </div>
+        <div class="form-group">
+            <%= f.label :gameset, 'ゲーム代（セット）' %>
+            <%= f.text_field :gameset, class: 'form-control' ,placeholder:"例：　1卓 1時間1200円"%>
+        </div>
+        <div class="form-group">
+            <%= f.label :content, 'お店の紹介' %>
+            <%= f.text_area :content, class: 'form-control', rows:10 ,placeholder:"例：　☆☆12周年キャンペーン☆☆
+                                                                                        いーじゃんは2020年4月で、早くも創業から12年を迎えました。
+                                                                                        コロナウイルスの影響もあり、例年より遅くなってしまいましたが日ごろの感謝を込めて
+                                                                                        12周年キャンペーンを実施致します！
+
+                                                                                        【開催期間】2020年9月15日～2020年10月14日
+                                                                                        【キャンペーン内容】
+                                                                                        ＜フリー＞
+                                                                                        ご新規のお客様　7,200円キャッシュバック！
+                                                                                        新規でお越しの際に、12ゲーム分のサービス券をお渡しいたします。
+                                                                                        サービス券は、5ゲームに1回お使いいただけます。すべて使い切るとなんと7,200円のキャッシュバックに！",required: true%>
+        </div>
+        <div class="form-group">
+            <%= f.label :image, '店舗画像' %>
+            <%= f.file_field :image, class: 'form-control' ,required: true%>
+            <small id="poster-tip" class="form-text text-muted">
+                画像を選んでね
+            </small>
+        </div>
+        <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
+        <small id="submit-tip" class="form-text text-muted">
+            投稿する前に投稿内容を見直してください!
+        </small>
+    <% end %>
+</div>

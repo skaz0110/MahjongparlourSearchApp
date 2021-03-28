@@ -17,11 +17,14 @@
       <%= render  'layouts/header' %>
     </header>
     
+    <%= render "layouts/flash" %>
+    
     <%= yield %>
     
     <div class="mt-5">
       <%= render 'layouts/image' %>
     </div>
+  
 
     <footer class="footer">
       <%= render 'layouts/footer' %>
