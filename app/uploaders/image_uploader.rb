@@ -7,7 +7,15 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+
+  # 本番環境のみで AWS S3 を使用するように分岐
+  # *開発環境でも使用したい場合は，条件分岐せず storage :fog のみ記述する
+  if Rails.env.production?
+    storage :fog
+  else
+    storage :file
+  end
+  
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
