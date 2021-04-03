@@ -1,24 +1,19 @@
 class HomesController < ApplicationController
   
-  ## aaaa
   # YoutubeAPIでMリーグの動画を表示
   require 'google/apis/youtube_v3'
-  require 'active_support/all'
-  
-  
-  
-  GOOGLE_API_KEY = "AIzaSyA3Z2MVyChn2wavCxawDBDhkK8yMup8its"
+  require 'active_support/all' 
 
   def find_videos(keyword, after: 1.months.ago, before: Time.now)
     service = Google::Apis::YoutubeV3::YouTubeService.new
-    service.key = GOOGLE_API_KEY
+    service.key = ENV["GOOGLE_API_KEY"]
 
     next_page_token = nil
     opt = {
       q: keyword,
       type: 'video',
-      max_results: 2,
-      order: :date,
+      max_results: 1,
+      # order: :date,
       page_token: next_page_token,
       published_after: after.iso8601,
       published_before: before.iso8601
