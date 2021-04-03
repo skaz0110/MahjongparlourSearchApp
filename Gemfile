@@ -46,6 +46,9 @@ gem 'devise-i18n'
 # 画像
 gem 'carrierwave', '~> 2.0'
 
+# S3
+gem 'fog-aws'
+
 # ページネーション
 gem 'kaminari'
 
@@ -72,6 +75,7 @@ gem 'omniauth-twitter'
 
 # スクレイピング
 gem 'mechanize'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
