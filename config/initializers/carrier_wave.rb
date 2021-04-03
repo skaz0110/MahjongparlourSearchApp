@@ -10,7 +10,7 @@ if Rails.env.production?
     }
     config.fog_directory = "mahjongparlour-go"
     
-    # CloudFront用の記述
+    # CloudFront用の記述 
     config.asset_host = "https://static.mahjongparlour-go.com"
   end
 end
