@@ -29,7 +29,7 @@ class User < ApplicationRecord
     end
   end
 
-  # Twitter認証ログイン用
+# Twitter認証ログイン用
 # ユーザーの情報があれば探し、無ければ作成する
 def self.find_for_oauth(auth)
   user = User.find_by(uid: auth.uid, provider: auth.provider)
@@ -47,6 +47,7 @@ def self.find_for_oauth(auth)
   user
 end
 
+# ダミーのアドレスを用意
 def self.dummy_email(auth)
   "#{Time.now.strftime('%Y%m%d%H%M%S').to_i}-#{auth.uid}-#{auth.provider}@example.com"
 end
