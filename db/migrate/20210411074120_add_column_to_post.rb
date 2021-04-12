@@ -8,7 +8,7 @@ class AddColumnToPost < ActiveRecord::Migration[6.1]
     # 追加
     add_column :posts, :phonenumber, :string
     add_column :posts, :prefecturecode, :integer
-    add_column :posts, :postalcode, :integer
+    add_column :posts, :postalcode, :string
     add_column :posts, :address1, :string
     add_column :posts, :address2, :string
     add_column :posts, :address3, :string

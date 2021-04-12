@@ -14,12 +14,28 @@
             <%= f.text_field :title, class: 'form-control',placeholder:"例：　雀荘ホワイト"%>
         </div>
         <div class="form-group">
-            <%= f.label :title, '住所 ' %>
-            <%= f.text_field :address, class: 'form-control' ,placeholder:"例：　東京都港区６丁目7-1"%>
+            <%= f.label :title, '郵便番号' %>
+            <%= f.text_field :postalcode, class: 'form-control' ,placeholder:"000-0000"%>
+        </div>
+        <div class="form-group">
+            <%= f.label :title, '都道府県 ' %>
+            <%= f.collection_select :prefecturecode, Prefecture.all, :id, :name, {include_blank: "---"}, {class: ""}%>
+        </div>
+        <div class="form-group">
+            <%= f.label :title, '住所１ ' %>
+            <%= f.text_field :address1, class: 'form-control' ,placeholder:"例：　港区"%>
+        </div>
+        <div class="form-group">
+            <%= f.label :title, '住所２ ' %>
+            <%= f.text_field :address2, class: 'form-control' ,placeholder:"例：　６丁目"%>
+        </div>
+        <div class="form-group">
+            <%= f.label :title, '住所３ ' %>
+            <%= f.text_field :address3, class: 'form-control' ,placeholder:"例：　7-1"%>
         </div>
         <div class="form-group">
             <%= f.label :phonenumber, '電話番号' %>
-            <%= f.text_field :phonenumber, class: 'form-control',value:"012",disabled:"disabled" %>
+            <%= f.text_field :phonenumber, class: 'form-control' %>
         </div>
         <div class="form-group">
             <%= f.label :access, 'お店までのアクセス' %>

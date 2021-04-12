@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2021_04_11_074120) do
     t.string "gameset"
     t.string "phonenumber"
     t.integer "prefecturecode"
-    t.integer "postalcode"
+    t.string "postalcode"
     t.string "address1"
     t.string "address2"
     t.string "address3"
