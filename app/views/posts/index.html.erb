@@ -18,7 +18,7 @@
 						<div class="col-md-8">
 							<div class="card-body">
 									<h5 class="card-title"><%= post.title %></h5>
-									<!--<p><%= post.address %></p>-->
+									<%= Prefecture.find(post.prefecturecode).name %><%= post.address1 %><%= post.address2 %><%= post.address3 %>
 									<p><%= post.content %></p>
 							</div>
 							<%end%>	
