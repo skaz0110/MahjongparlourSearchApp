@@ -1,15 +1,16 @@
 # 削除
 # User.destroy_all
- User.last.destroy
+# User.last.destroy
 # Review.destroy_all
-# Post.destroy_all
+ Post.destroy_all
 # ShopDetail.destroy_all
 # Like.destroy_all
 
-#  post1=Post.create!(:title => 'ジャン綾瀬', :image => '画像', :content => '足立区綾瀬の雀荘です！')
-#  post2=Post.create!(:title => '川崎一番', :image => '画像', :content => '神奈川県川崎市の雀荘です！')
-#  post3=Post.create!(:title => '渋谷ワールド', :image => '画像', :content => '渋谷区の雀荘です！')
-#  post4=Post.create!(:title => '雀荘マツヤマ', :image => '画像', :content => '松山市のの雀荘です！')
+ post1=Post.create!(:user_id => 1,:title => 'ジャン綾瀬',:postalcode => '111-0000',:prefecturecode => 13,:address1 => '港区',:address2 => '６丁目',:address3 => 'ミナトクビル101号'  ,:phonenumber => '080-1222-3456',:access => '徒歩１分',:openinghours => '２４時間営業',:regularholiday => '水曜' ,:gamefree => '１ゲーム３００円' ,:gameset => '１２００円' ,:image => '画像', :content => 'ようこそ！')
+ post2=Post.create!(:user_id => 1,:title => 'ホワイト',:postalcode => '412-0032',:prefecturecode => 7,:address1 => '松山市',:address2 => '7-1',:address3 => ''                    ,:phonenumber => '090-1233-7899',:access => '駅から５分',:openinghours => '８時〜２６時',:regularholiday => '年中無休' ,:gamefree => '１ゲーム３００円' ,:gameset => '７００円' ,:image => '画像', :content => '元気に営業してます！')
+ post3=Post.create!(:user_id => 1,:title => 'ブル',:postalcode => '765-0056',:prefecturecode => 5,:address1 => '福岡市',:address2 => '8-1-3',:address3 => '福岡タワー801号'        ,:phonenumber => '050-1242-8798',:access => '〇〇駅から徒歩１０分',:openinghours => '９時〜２７時',:regularholiday => '月曜' ,:gamefree => '１ゲーム３００円' ,:gameset => '８００円' ,:image => '画像', :content => 'どうぞ！')
+ post4=Post.create!(:user_id => 1,:title => 'JAST',:postalcode => '789-3456',:prefecturecode => 9,:address1 => '梅田',:address2 => '3丁目6-21',:address3 => '梅田ハイツ１階'       ,:phonenumber => '070-1433-1234',:access => '車で移動',:openinghours => '２４時間営業',:regularholiday => '祝日' ,:gamefree => '１ゲーム３００円' ,:gameset => '１０００円' ,:image => '画像', :content => '初心者歓迎！！')
+
 
 # user1 = User.create!(email: "satou@example.com", password: "password")
 # user2 = User.create!(email: "suzuki@example.com", password: "password")

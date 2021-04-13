@@ -62,7 +62,7 @@ class PostsController < ApplicationController
     def create
       
       @post = current_user.posts.new(post_params)
-      
+          
       if @post.save
         
           #　コメント送信後は、一つ前のページへリダイレクトさせる。
@@ -78,7 +78,7 @@ class PostsController < ApplicationController
   
     private
       def post_params
-          params.require(:post).permit(:content,:image,:title,:address,:phonenumber,:access,:openinghours,:regularholiday,:gamefree,:gameset)
+          params.require(:post).permit(:content,:image,:title,:address1,:address2,:address3,:postalcode,:prefecturecode,:phonenumber,:access,:openinghours,:regularholiday,:gamefree,:gameset)
       end
     
 end
