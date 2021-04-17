@@ -4,7 +4,7 @@
       <div class="card-body">
         <div class="form-group mb-5">
           <%= form_with model:[@post, @comment] do |form|  %>
-            <%= form.text_area :content ,class:"form-control",placeholder:"今日は役満振り込んだ...。" ,required: true%>
+            <%= form.text_area :content ,class:"form-control",placeholder:"今日は役満振り込んだ...。" %>
             <%= form.hidden_field :post_id, :value => params[:post_id] %>
             <%= form.submit "つぶやく",class:"btn btn-primary mt-2"%>
           <% end %>
@@ -19,7 +19,7 @@
             <%= comment.user.username %>
             <%= l comment.created_at %>
             </p> 
-            <%= comment.content %>
+            <%= safe_join(comment.content.split("\n"),tag(:br)) %>
           <% end %> 
         </div>
       </div>
