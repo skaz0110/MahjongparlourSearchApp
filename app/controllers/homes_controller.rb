@@ -24,7 +24,7 @@ class HomesController < ApplicationController
   end
 
   # 1ページの表示数
-  PER_PAGE = 5
+  PER_PAGE = 6
 
     
   def index

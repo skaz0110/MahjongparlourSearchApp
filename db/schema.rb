@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_063022) do
+ActiveRecord::Schema.define(version: 2021_04_11_074120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,13 +73,17 @@ ActiveRecord::Schema.define(version: 2021_03_13_063022) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
-    t.string "address"
-    t.integer "phonenumber"
     t.string "access"
     t.string "openinghours"
     t.string "regularholiday"
     t.string "gamefree"
     t.string "gameset"
+    t.string "phonenumber"
+    t.integer "prefecturecode"
+    t.string "postalcode"
+    t.string "address1"
+    t.string "address2"
+    t.string "address3"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 

@@ -4,6 +4,17 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments, dependent: :destroy
   
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+
+  # バリデーション
+  validates :username, presence: true, length: { maximum: 30 }
+  # validates :image, presence: true, numericality: true, inclusion: { in: 0..150 }
+  validates :email,
+            presence: true,
+            uniqueness: true,
+            length: { maximum: 255 },
+            format: { with: VALID_EMAIL_REGEX }
+
   ##  画像用
   mount_uploader :image, ImageUploader
 
@@ -29,7 +40,7 @@ class User < ApplicationRecord
     end
   end
 
-  # Twitter認証ログイン用
+# Twitter認証ログイン用
 # ユーザーの情報があれば探し、無ければ作成する
 def self.find_for_oauth(auth)
   user = User.find_by(uid: auth.uid, provider: auth.provider)
@@ -47,6 +58,7 @@ def self.find_for_oauth(auth)
   user
 end
 
+# ダミーのアドレスを用意
 def self.dummy_email(auth)
   "#{Time.now.strftime('%Y%m%d%H%M%S').to_i}-#{auth.uid}-#{auth.provider}@example.com"
 end
