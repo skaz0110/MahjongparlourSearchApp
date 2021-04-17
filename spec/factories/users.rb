@@ -5,4 +5,3 @@ FactoryBot.define do
     password { Faker::Internet.password(min_length: 6) }
   end
 end
-
