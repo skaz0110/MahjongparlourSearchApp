@@ -2,9 +2,8 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :post
 
-  # レビューのコメントは５字〜１００字
-  #
-  validates :content, presence: true, length: { maximum: 100 }
+  # レビューのコメントは2００字
+  validates :content, presence: true, length: { maximum: 200 }
   validates :star,    presence: true
 
   def reviewed_by?(user)
