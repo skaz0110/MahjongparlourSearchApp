@@ -9,7 +9,7 @@ services:
     volumes:
       - postgresql-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=baseball0110 # 任意のパスワードを設定
+      - POSTGRES_PASSWORD=<%= Rails.application.credentials.db[:password] %> # 任意のパスワードを設定
   web:
     build:
       context: .

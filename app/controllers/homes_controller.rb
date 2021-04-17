@@ -19,7 +19,7 @@ class HomesController < ApplicationController
       published_before: before.iso8601
     }
 
-    service.list_searches(:snippet, opt)
+    # service.list_searches(:snippet, opt)
 
   end
 
