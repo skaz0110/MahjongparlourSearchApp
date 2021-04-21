@@ -30,8 +30,9 @@
 
 <div class="ml-4">
   <h5>
-    <%= link_to "お店情報" ,post_path(@post)%>
+    <%= link_to "お店情報" ,post_path(@post)%>&nbsp;
+    <%= link_to "口コミ" ,post_reviews_path(@post)%>&nbsp;
     <%= link_to "雀活" ,post_comments_path(@post)%>
   </h5>
-  <hr>
+  <hr color="#000000">
 </div>

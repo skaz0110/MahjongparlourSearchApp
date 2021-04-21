@@ -1,5 +1,12 @@
 class ReviewsController < ApplicationController
 
+  def index
+    @post = Post.find(params[:post_id])
+    # 投稿詳細に関連付けてあるコメントを全取得
+    @reviews = @post.reviews.order(created_at: :desc)
+
+  end
+  
   def new
      
     @post = Post.find(params[:post_id])
