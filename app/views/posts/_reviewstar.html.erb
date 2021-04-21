@@ -1,8 +1,18 @@
 <!--個人の口コミ表示星評価-->
+
+
 <% @reviews.each do |review| %> 
-  <hr>
-    <%= review.user.username %>
-      <div id="star-rate-<%= review.id %>"></div>
+
+<div class="card mt-3" >
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+    <%= review.user.username %>さんの口コミ
+    <% if current_user.id == review.user_id %>
+        <%= link_to '削除', post_review_path(review.post.id, review.id) , method: :delete %>
+        <!--<%= link_to '編集', edit_post_review_path(review.post.id,review.id) %>-->
+        <% end  %>
+    <hr>
+      <div class="" id="star-rate-<%= review.id %>">
         <script>
           $('#star-rate-<%= review.id %>').raty({
             size: 36,
@@ -12,15 +22,18 @@
             half: true,
             readOnly: true,
             score: `<%= review.star %>`,
+            
           })
-        </script> 
-    <%= review.content %>  
+        </script>
+        <%= review.star %>
+      </div>
+    </li>
+  
   <!--/星評価-->
   <!-- #ログインユーザーとコメントを書いたユーザーが一致すれば表示 -->
-    <p>
-      <% if current_user.id == review.user_id %>
-        <%= link_to '削除', post_review_path(review.post.id, review.id) , method: :delete %>
-        <!--<%= link_to '編集', edit_post_review_path(review.post.id,review.id) %>-->
-        <% end  %>
-    </p>                   
+        <li class="list-group-item">    
+    <%= safe_join(review.content.split("\n"),tag(:br)) %>
+  </li>    
+ </ul>
+</div>
   <% end %>
