@@ -94,6 +94,43 @@
       </div>
   </div>
 
+  <!-- 新着のレビュー -->
+  <div class="container mb-5">
+    <h3>新着レビュー</h3>
+      <div class="border rounded" style="padding:50px;background-color:white;">
+        <% @reviews.each do |review| %> 
+          <div class="card mt-3" >
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <%= review.post.title %>への口コミ
+                  <hr>
+                  <!--/星評価-->
+                  <div class="" id="star-rate-<%= review.id %>">
+                    <script>
+                      $('#star-rate-<%= review.id %>').raty({
+                        size: 36,
+                        starOff:  '<%= asset_path('star-off.png') %>',
+                        starOn :  '<%= asset_path('star-on.png') %>',
+                        starHalf: '<%= asset_path('star-half.png') %>',
+                        half: true,
+                        readOnly: true,
+                        score: `<%= review.star %>`,             
+                      })
+                    </script>
+                    <%= review.star %>
+                  </div>
+                  <!--/星評価-->
+              </li>
+              <li class="list-group-item">    
+                <%= safe_join(review.content.split("\n"),tag(:br)) %>
+              </li>    
+            </ul>
+          </div>
+        <% end %> 
+      </div>
+  </div>
+
+
   <div class="container mb-5">
     <h3>麻雀ニュース</h3>
       <div class="border rounded" style="padding:50px;background-color:white;">
