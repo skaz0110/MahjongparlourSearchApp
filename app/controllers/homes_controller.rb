@@ -37,10 +37,13 @@ class HomesController < ApplicationController
 
       # 最新のコメントを５件取得取得
       @comments = Comment.all.order(id: "DESC").limit(5)
+
+      @reviews   = Review.all.order(id: "DESC").limit(5)
       
       # スクレイピング
       agent = Mechanize.new                  
-      page = agent.get("https://jan39.com/news/") 
+      page = agent.get("https://jan39.com/news/")
+
       # ニュースを３件取得
       @firstnews  = page.links[88]
       @secondnews = page.links[92]
