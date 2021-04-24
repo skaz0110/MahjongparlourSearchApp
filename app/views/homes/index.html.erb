@@ -102,10 +102,10 @@
           <div class="card mt-3" >
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <%= review.post.title %>への口コミ
+                <div style="height: 10px;"><%= link_to  review.post.title ,post_path(review.post) %>の口コミ</div>
                   <hr>
                   <!--/星評価-->
-                  <div class="" id="star-rate-<%= review.id %>">
+                  <div id="star-rate-<%= review.id %>">
                     <script>
                       $('#star-rate-<%= review.id %>').raty({
                         size: 36,

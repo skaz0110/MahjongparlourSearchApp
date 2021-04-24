@@ -18,7 +18,8 @@ class HomesController < ApplicationController
       published_after: after.iso8601,
       published_before: before.iso8601
     }
-
+    
+    #TODO 表示容量オーバーのためyoutbe動画は一時非表示
     # service.list_searches(:snippet, opt)
 
   end

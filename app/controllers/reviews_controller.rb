@@ -1,10 +1,13 @@
 class ReviewsController < ApplicationController
 
+  # 表示数
+  PER_PAGE = 10
+
   def index
     @post = Post.find(params[:post_id])
+    
     # 投稿詳細に関連付けてあるコメントを全取得
-    @reviews = @post.reviews.order(created_at: :desc)
-
+    @reviews = @post.reviews.page(params[:page]).order(created_at: :desc).per(PER_PAGE)
   end
   
   def new

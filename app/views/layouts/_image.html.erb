@@ -1,7 +1,6 @@
-
-<!-- ログインしてるとヘッダー上に画像が表示される -->
+<!-- ログインしてるとフッター上に画像が表示される -->
 <% if user_signed_in? %>
   <div>
-    <img src="/assets/footerimage" class="img-fluid w-100"　alt="麻雀">
+    <%= image_tag asset_path("footerimage",alt: "麻雀" ),class:"img-fluid w-100" %>
   </div>
 <%end%>
