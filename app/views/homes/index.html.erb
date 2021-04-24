@@ -19,7 +19,7 @@
                   <img class="card-img-top" src="<%= post.image %>">
                   <div class="card-body">
                     <div class="card-title">
-                      <h5><%= post.title%></h5>
+                      <strong><h5><%= post.title%></h5></strong>
                     </div>
                     <p class="card-text">
                       <%= post.content.truncate(100)%>
@@ -30,10 +30,6 @@
             </div>
           <%end%>
         </div>
-        <!-- ページネーション -->
-          <div class="mx-auto" style="width: 200px;">
-            <%= paginate @posts %>
-          </div>
       </div>
   </div>
 
@@ -54,25 +50,6 @@
         <% end %>
       </div>
   </div>   
-<%
-=end%>
-
-
-
-
-  <%
-=begin%>
- <div class="container" style="margin-bottom:100px;">
-    <h3>Mリーグ最新動画</h3>
-    <div class="border rounded" style="padding:50px;background-color:white;">
-      <div class="youtube mb-5">
-        <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/V1WQ6aGdYns" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-      </div>
-      <div class="youtube">
-        <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/mmlz9sg4_zY?start=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
-      </div>
-    </div>  
-  </div>  
 <%
 =end%>
 
@@ -102,7 +79,7 @@
           <div class="card mt-3" >
             <ul class="list-group list-group-flush">
               <li class="list-group-item">
-                <div style="height: 10px;"><%= link_to  review.post.title ,post_path(review.post) %>の口コミ</div>
+                <div style="height: 10px;"><%= link_to  review.post.title ,post_path(review.post),class:"Editlink" %> の口コミ</div>
                   <hr>
                   <!--/星評価-->
                   <div id="star-rate-<%= review.id %>">
@@ -130,6 +107,18 @@
       </div>
   </div>
 
+  <div class="container" style="margin-bottom:100px;">
+    <h3>Mリーグ動画</h3>
+    <div class="border rounded" style="padding:50px;background-color:white;">
+      <div class="youtube mb-5">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/V1WQ6aGdYns" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="youtube">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/mmlz9sg4_zY?start=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>  
+  </div>  
+
 
   <div class="container mb-5">
     <h3>麻雀ニュース</h3>
@@ -145,10 +134,9 @@
 <% else %>
 
 <div class="card" style="max-width: 100%;">
-  <img class="card-img" src="/assets/PAK57_paiwouragaeshisi-pai" alt="">
+  <%= image_tag asset_path("PAK57_paiwouragaeshisi-pai",alt: "トップ画像" )%>
   <div class="card-img-overlay text-center"style="margin-top:200px;">
     <img height="150" src="/images/logo_transparent2.png" >  
-    <p class="text-center">as中央</p>
     <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
     <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path,  method: :post,class: "nav-link" %> 
     <%= link_to user_twitter_omniauth_authorize_path do %>
@@ -161,7 +149,7 @@
 <div class="container-fluid mt-5">
   <div class="card-deck">
     <div class="card">
-      <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+    <%= image_tag asset_path("Mobile feed-amico",alt: "トップ画像" )%>
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -169,7 +157,7 @@
       </div>
     </div>
     <div class="card">
-      <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+      <%= image_tag asset_path("Mobile feed-bro",alt: "トップ画像" )%>
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -177,7 +165,7 @@
       </div>
     </div>
     <div class="card">
-      <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect fill="#868e96" width="100%" height="100%"/><text fill="#dee2e6" dy=".3em" x="50%" y="50%">Image cap</text></svg>
+      <%= image_tag asset_path("World Children's Day-pana",alt: "トップ画像" )%>
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
