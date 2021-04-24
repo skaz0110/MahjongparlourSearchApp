@@ -5,10 +5,8 @@
   <div class="card mt-3" >
     <ul class="list-group list-group-flush">
       <li class="list-group-item">
-        <%= review.user.username %>さんの口コミ
-          <% if current_user.id == review.user_id %>
-            <%= link_to '削除', post_review_path(review.post.id, review.id) , method: :delete %>
-          <% end  %>
+        <img  height="30" src="<%= review.user.image %>">
+        <%= review.user.username %>さんの口コミ        
           <hr>
           <!--/星評価-->
           <div class="" id="star-rate-<%= review.id %>">
@@ -28,7 +26,14 @@
           <!--/星評価-->
       </li>
       <li class="list-group-item">    
+        <div style="font-size:14px;"><%= l review.created_at %></div><br>
         <%= safe_join(review.content.split("\n"),tag(:br)) %>
+        <!--自分の投稿に削除ボタンを表示-->
+        <div class=" text-right">        
+          <% if current_user.id == review.user_id %>
+            <%= link_to "削除", post_review_path(review.post.id, review.id), class: 'btn btn-outline-danger card-text text-right',method: :delete , data: {confirm: "口コミを削除しますか？"}%>      
+          <% end  %>
+        </div>
       </li>    
     </ul>
   </div>
