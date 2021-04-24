@@ -29,7 +29,7 @@
           <!--/星評価-->
       </li>
       <li class="list-group-item">    
-        <div style="font-size:14px;"><%= l review.created_at %></div><br>
+        <div style="font-size:14px;color: #808080;"><%= l review.created_at %></div><br>
         <%= safe_join(review.content.split("\n"),tag(:br)) %>
         <!--自分の投稿に削除ボタンを表示-->
         <div class=" text-right">        

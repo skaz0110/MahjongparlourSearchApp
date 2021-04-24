@@ -8,21 +8,20 @@
             <%= form.hidden_field :post_id, :value => params[:post_id] %>
             <%= form.submit "つぶやく",class:"btn btn-primary mt-2"%>
           <% end %>
-        </div>
-      <h4>
-      【コメント一覧】
-      </h4>
+        </div> 
         <div>
           <% @comments.each do |comment| %>
             <p><hr>
-            <img  height="40" src="<%= comment.user.image %>">
             <%= comment.user.username %>
-            <%= l comment.created_at %>
+            <div style="font-size:12px; color: #808080;"><%= l comment.created_at %></div>
             </p> 
             <%= safe_join(comment.content.split("\n"),tag(:br)) %>
           <% end %> 
         </div>
       </div>
+    <!-- ページネーション -->
+    <div class="mx-auto mt-5" style="width: 200px;">
+      <%= paginate @comments %>
+    </div>
   </div>
 </div>
-
