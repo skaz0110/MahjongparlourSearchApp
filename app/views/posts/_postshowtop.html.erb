@@ -13,11 +13,11 @@
   
   </div>
   <div class="card-text text-right">
-    <div id="post_<%= @post.id %>">
-    
     <!--いいね機能の表示-->
+    <div class="mb-1">
       <%= render 'posts/post' %>
     </div>
+    <!--口コミボタンの表示-->
     <div>
       <%if @post.reviews.where(user_id:current_user).exists?%>
         <button class="btn btn-dark" disabled>口コミ投稿済み</button>

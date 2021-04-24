@@ -1,17 +1,18 @@
 <!-- いいね機能　-->
-<% if current_user.liked_by?(@post.id) %>
-  <td>
-    <%= link_to  like_path(@post), class: "like-link ", method: :DELETE, remote: true do%>
-      <i class="fa fa-heart unlike-btn"></i>
-   
-    <% end %>
-    <%= @post.likes.count %>
-  </td>
-<% else %>
-  <td>
-    <%= link_to  create_like_path(@post) , class: "like-link",  method: :POST, remote: true do%>
-      <i class="fa fa-heart like-btn"></i>
-    <% end %>
-    <%= @post.likes.count %>
-  </td>
-<% end %>
+<div id="post_<%= @post.id %>">
+  <% if current_user.liked_by?(@post.id) %>
+    <td>
+      <%= link_to  like_path(@post), class: "btn btn-light", method: :DELETE, remote: true do%>
+        <i class="fa fa-heart unlike-btn"></i> いいね 
+        <%= @post.likes.count %>
+      <% end %>
+    </td>
+  <% else %>
+    <td>
+      <%= link_to  create_like_path(@post) , class: "btn btn-light",  method: :POST, remote: true do%>
+        <i class="fa fa-heart like-btn"></i> いいね
+        <%= @post.likes.count %>
+      <% end %>
+    </td>
+  <% end %>
+</div>
