@@ -1,48 +1,56 @@
-<!-- 投稿に対する口コミ件数表示 -->
-<div>
-  全<%=@reviews.total_count%>件
-</div>
 
-<!-- 口コミの表示 -->
-<% @reviews.each do |review| %> 
-  <div class="card mt-3" >
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">
-        <img  height="30" src="<%= review.user.image %>">
-        <%= review.user.username %>さんの口コミ        
-          <hr>
-          <!--/星評価-->
-          <div class="" id="star-rate-<%= review.id %>">
-            <script>
-              $('#star-rate-<%= review.id %>').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn :  '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: true,
-                readOnly: true,
-                score: `<%= review.star %>`,             
-              })
-            </script>
-            <%= review.star %>
-          </div>
-          <!--/星評価-->
-      </li>
-      <li class="list-group-item">    
-        <div style="font-size:14px;"><%= l review.created_at %></div><br>
-        <%= safe_join(review.content.split("\n"),tag(:br)) %>
-        <!--自分の投稿に削除ボタンを表示-->
-        <div class=" text-right">        
-          <% if current_user.id == review.user_id %>
-            <%= link_to "削除", post_review_path(review.post.id, review.id), class: 'btn btn-outline-danger card-text text-right',method: :delete , data: {confirm: "口コミを削除しますか？"}%>      
-          <% end  %>
-        </div>
-      </li>    
-    </ul>
+<!-- 口コミがある場合 -->
+<% if @reviews.total_count >  0 %>
+  <!-- 投稿に対する口コミ件数表示 -->
+  <div>
+    全<%=@reviews.total_count%>件
   </div>
-<% end %>
+  <!-- 口コミの表示 -->
+  <% @reviews.each do |review| %> 
+    <div class="card mt-3" >
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <img  height="30" src="<%= review.user.image %>">
+          <%= review.user.username %>さんの口コミ        
+            <hr>
+            <!--/星評価-->
+            <div class="" id="star-rate-<%= review.id %>">
+              <script>
+                $('#star-rate-<%= review.id %>').raty({
+                  size: 36,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn :  '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: `<%= review.star %>`,             
+                })
+              </script>
+              <%= review.star %>
+            </div>
+            <!--/星評価-->
+        </li>
+        <li class="list-group-item">    
+          <div style="font-size:14px;color: #808080;"><%= l review.created_at %></div><br>
+          <%= safe_join(review.content.split("\n"),tag(:br)) %>
+          <!--自分の投稿に削除ボタンを表示-->
+          <div class=" text-right">        
+            <% if current_user.id == review.user_id %>
+              <%= link_to "削除", post_review_path(review.post.id, review.id), class: 'btn btn-outline-danger card-text text-right',method: :delete , data: {confirm: "口コミを削除しますか？"}%>      
+            <% end  %>
+          </div>
+        </li>    
+      </ul>
+    </div>
+  <% end %>
+  <!-- ページネーション -->
+  <div class="mx-auto mt-5" style="width: 200px;">
+    <%= paginate @reviews %>
+  </div>
+<!-- 口コミが一件もない場合 -->
+<%else %>
+  <div class="text-center m-5">
+    <h4>口コミが投稿されていません <i class="fa fa-grin-beam-sweat"></i></h4>
+  </div>
+<%end%>
 
-<!-- ページネーション -->
-<div class="mx-auto mt-5" style="width: 200px;">
-  <%= paginate @reviews %>
-</div>

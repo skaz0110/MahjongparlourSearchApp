@@ -1,10 +1,13 @@
 class CommentsController < ApplicationController
 
+  # 表示数
+  PER_PAGE = 10
+
   def index
     @post = Post.find(params[:post_id])
     
     # 投稿詳細に関連付けてあるコメントを全取得
-    @comments = @post.comments.order(created_at: :desc)
+    @comments = @post.comments.page(params[:page]).order(created_at: :desc).per(PER_PAGE)
     @comment = current_user.comments.new  
   end
 

@@ -31,7 +31,7 @@ class HomesController < ApplicationController
   def index
       # ページネーション
       @q = Post.ransack(params[:q])
-      @posts = @q.result.page(params[:page]).per(PER_PAGE)
+      @posts = @q.result.page(params[:page]).order(created_at: :desc).per(PER_PAGE)
       
       # 動画を取得
       @youtube_data = find_videos('M.LEAGUE [プロ麻雀リーグ]')
