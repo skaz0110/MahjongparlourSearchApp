@@ -1,6 +1,9 @@
-<!--個人の口コミ表示星評価-->
+<!-- 投稿に対する口コミ件数表示 -->
+<div>
+  全<%=@reviews.total_count%>件
+</div>
 
-
+<!-- 口コミの表示 -->
 <% @reviews.each do |review| %> 
   <div class="card mt-3" >
     <ul class="list-group list-group-flush">
@@ -38,3 +41,8 @@
     </ul>
   </div>
 <% end %>
+
+<!-- ページネーション -->
+<div class="mx-auto mt-5" style="width: 200px;">
+  <%= paginate @reviews %>
+</div>
