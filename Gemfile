@@ -65,7 +65,7 @@ gem 'turbolinks', '~> 5'
 gem 'google-api-client', '~> 0.11'
 
 # 環境変数を管理
-gem 'dotenv-rails'
+# gem 'dotenv-rails'
 
 # TwitterAPI
 gem 'omniauth', '1.9.1'
