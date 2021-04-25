@@ -41,22 +41,7 @@ class PostsController < ApplicationController
     def show
       
       @post = Post.find(params[:id])
-      
-      # 投稿詳細に関連付けてあるコメントを全取得
-      @reviews = @post.reviews
-      
-      # 投稿詳細画面でコメントの投稿を行うので、formのパラメータ用にReviewオブジェクトを取得
-      @review = current_user.reviews.new  
-
-      @shopdetails = ShopDetail.order(:id)
               
-      if user_signed_in?
-        
-      else
-
-          # ログインしてください
-          redirect_to user_session_path
-      end
     end
 
     def create
