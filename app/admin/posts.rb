@@ -1,6 +1,6 @@
 ActiveAdmin.register Post do
 
-  permit_params :content,:image,:title,:user_id,:address,:phonenumber,:access,:openinghours,:regularholiday,:gamefree,:gameset
+  permit_params :content,:image,:title,:user_id,:phonenumber,:access,:openinghours,:regularholiday,:gamefree,:gameset,:address1,:address2,:address3,:prefecturecode,:postalcode
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
