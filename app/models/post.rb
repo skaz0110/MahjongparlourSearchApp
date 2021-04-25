@@ -1,12 +1,13 @@
 class Post < ApplicationRecord
     belongs_to :user
     has_many :reviews, dependent: :destroy
-    has_many :likes 
+    has_many :likes , dependent: :destroy
     has_one :shop_detail
     has_many :comments, dependent: :destroy
     
-    extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to_active_hash :prefecture
+    # prefectureモデルとの紐付け
+    # extend ActiveHash::Associations::ActiveRecordExtensions
+    # belongs_to_active_hash :prefecture
 
     # バリデーション
     # 電話番号（ハイフンありなし10桁・11桁）
