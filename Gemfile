@@ -96,6 +96,8 @@ group :development, :test do
   # ダミーデータの生成
   gem 'faker'
 
+  gem 'rails-controller-testing'
+
 end
 
 group :development do

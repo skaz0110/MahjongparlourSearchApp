@@ -9,6 +9,10 @@ require 'rspec/rails'
 # 日本語のダミーデータを使用
 Faker::Config.locale = :ja
 
+# ログインユーザーを作成するため
+require 'devise'
+require File.expand_path("spec/support/controller_macros.rb")
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -35,6 +39,11 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+
+  # deviseのtest_helperとmacrosをcontroller内で使えるように
+  config.include Devise::TestHelpers, type: :controller
+  config.include ControllerMacros, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
 
   # 使用する際に FactoryBot を省略できるようにする
   config.include FactoryBot::Syntax::Methods
