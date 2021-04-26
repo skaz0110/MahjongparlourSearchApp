@@ -1,4 +1,5 @@
 FactoryBot.define do
+
   factory :post do
     title { Faker::Lorem.word }
     content { Faker::Lorem.paragraph }
@@ -8,5 +9,9 @@ FactoryBot.define do
     address2{ Faker::Address.street_name }
     phonenumber{ Faker::PhoneNumber.phone_number }
     user
+  end
+
+  trait :invalid do
+    title { nil }
   end
 end
