@@ -165,4 +165,87 @@ RSpec.describe "Posts", type: :request do
     end
   end
 
+  describe 'PATCH #update' do
+    subject { patch(post_path(post.id), params: params) }
+    let(:post) { create(:post) }
+
+    context 'パラメータが正常な場合' do
+      let(:params) { { post: attributes_for(:post) } }
+
+      it 'リクエストが成功する' do
+        subject
+        expect(response).to have_http_status(302)
+      end
+
+      it '店名 が更新される' do
+        origin_title = post.title
+        new_title = params[:post][:title]
+        expect { subject }.to change { post.reload.title }.from(origin_title).to(new_title)
+      end
+
+      it '郵便場号 が更新される' do
+        origin_postalcode = post.postalcode
+        new_postalcode = params[:post][:postalcode]
+        expect { subject }.to change { post.reload.postalcode }.from(origin_postalcode).to(new_postalcode)
+      end
+
+      it '住所１ が更新される' do
+        origin_address1 = post.address1
+        new_address1 = params[:post][:address1]
+        expect { subject }.to change { post.reload.address1 }.from(origin_address1).to(new_address1)
+      end
+
+      it '住所２ が更新される' do
+        origin_address2 = post.address2
+        new_address2 = params[:post][:address2]
+        expect { subject }.to change { post.reload.address2 }.from(origin_address2).to(new_address2)
+      end
+
+      it '電話番号 が更新される' do
+        origin_phonenumber = post.phonenumber
+        new_phonenumber = params[:post][:phonenumber]
+        expect { subject }.to change { post.reload.phonenumber }.from(origin_phonenumber).to(new_phonenumber)
+      end
+
+      it '詳細ページにリダイレクトされる' do
+        subject
+        expect(response).to redirect_to Post.last
+      end
+    end
+
+    context 'パラメータが異常な場合' do
+      let(:params) { { post: attributes_for(:post, :invalid) } }
+
+      it 'リクエストが成功する' do
+        subject
+        expect(response).to have_http_status(200)
+      end
+
+      it '店名 が更新されない' do
+        expect { subject }.not_to change(post.reload, :title)
+      end
+      
+      it '郵便番号 が更新されない' do
+        expect { subject }.not_to change(post.reload, :postalcode)
+      end
+
+      it '住所１ が更新されない' do
+        expect { subject }.not_to change(post.reload, :address1)
+      end
+
+      it '住所２ が更新されない' do
+        expect { subject }.not_to change(post.reload, :address2)
+      end
+
+      it '電話番号 が更新されない' do
+        expect { subject }.not_to change(post.reload, :phonenumber)
+      end
+
+      it '編集ページがレンダリングされる' do
+        subject
+        expect(response.body).to include '情報修正'
+      end
+    end
+  end
+
 end
