@@ -127,4 +127,42 @@ RSpec.describe "Posts", type: :request do
     end
   end
 
+  describe "GET #edit" do
+    subject { get(edit_post_path(post.id)) }
+    context "投稿が存在するとき" do
+      let(:post) { create(:post) }
+      let(:post_id) { post.id }
+  
+      it "リクエストが成功する" do
+        subject
+        expect(response).to have_http_status(200)
+      end
+
+      it "店名 が表示されている" do
+        subject 
+        expect(response.body).to include post.title
+      end
+
+      it "郵便場号 が表示されている" do
+        subject        
+        expect(response.body).to include post.postalcode
+      end
+
+      it "住所１ が表示されている" do
+        subject        
+        expect(response.body).to include post.address1
+      end
+      
+      it "住所２ が表示されている" do
+        subject        
+        expect(response.body).to include post.address2
+      end 
+
+      it "電話番号 が表示されている" do
+        subject        
+        expect(response.body).to include post.phonenumber
+      end         
+    end
+  end
+
 end
