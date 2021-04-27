@@ -26,7 +26,7 @@ class PostsController < ApplicationController
       
       if @post.update(post_params)
 
-        redirect_to posts_path, notice: "更新しました"
+        redirect_to post_path, notice: "更新しました"
       
       else
         
