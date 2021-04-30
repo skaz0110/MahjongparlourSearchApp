@@ -4,4 +4,8 @@ FactoryBot.define do
     email { Faker::Internet.unique.email }
     content { Faker::Lorem.paragraph }
   end
+
+  trait :contactinvalid do
+    email { nil }
+  end
 end
