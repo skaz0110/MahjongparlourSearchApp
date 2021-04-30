@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
     if @review.save
 
       # 投稿の詳細ページへ戻る
-      redirect_to post_path(params[:post_id]), notice: "口コミを投稿しました"
+      redirect_to post_reviews_path(params[:post_id]), notice: "口コミを投稿しました"
     else
 
       # 画面遷移はなし　再入力を促す
@@ -39,7 +39,8 @@ class ReviewsController < ApplicationController
 
   def destroy
     Review.find_by(id: params[:id],post_id: params[:post_id]).destroy
-    redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
+    redirect_to post_reviews_path(params[:post_id])
   end
   
   # def edit
