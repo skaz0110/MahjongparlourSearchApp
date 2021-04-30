@@ -91,14 +91,25 @@ RSpec.describe "Reviews", type: :request do
     end
   end
 
-  describe "GET #destroy" do
-    subject { get(new_post_path) }
-    
-    context "投稿が存在するとき" do
-      
-      it "リクエストが成功する" do
-        subject     
-        expect(response).to have_http_status(:ok)
+  describe 'DELETE #destroy' do
+    subject { delete(post_review_path(post.id,review.id)) }
+
+    let!(:post) { create(:post) }
+    let!(:review) { create(:review, post: post) }
+
+    context 'パラメータが正常な場合' do
+      it 'リクエストが成功する' do
+        subject
+        expect(response).to have_http_status(302)      
+      end
+
+      it 'レビューが削除される' do
+        expect { subject }.to change(Review, :count).by(-1)
+      end
+
+      it 'レビュー一覧にリダイレクトすること' do
+        subject
+        expect(response).to redirect_to post_reviews_path(post.id)
       end
     end
   end
