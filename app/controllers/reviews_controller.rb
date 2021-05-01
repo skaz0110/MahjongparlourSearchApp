@@ -1,8 +1,7 @@
 class ReviewsController < ApplicationController
 
-  # 表示数
+  before_action :login_check
   PER_PAGE = 10
-
   def index
     
     @post = Post.find(params[:post_id])

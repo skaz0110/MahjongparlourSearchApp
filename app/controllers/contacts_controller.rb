@@ -1,4 +1,7 @@
 class ContactsController < ApplicationController
+  
+  before_action :login_check
+
   def new
     @contact = Contact.new
   end
