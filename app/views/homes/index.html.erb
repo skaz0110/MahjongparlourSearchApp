@@ -1,12 +1,9 @@
 <!-- ログイン時 -->
-<% if user_signed_in? %>
-
-  <div class="mx-auto" style="width: 400px;margin-top:70px;" >
-    <%= search_form_for @q ,url: posts_path do |f| %>
-      <%= f.search_field :title_cont ,class:"form-control mr-sm-2"%>
-      <%= f.submit ("検索"),class:"btn btn-outline-success my-2 my-sm-0"%>
-    <% end %>
-  </div>
+<%
+=begin%>
+ <% if user_signed_in? %>  
+<%
+=end%>
 
   <div class="container mt-5">
     <h3>新着雀荘</h3>  
@@ -32,8 +29,6 @@
         </div>
       </div>
   </div>
-
-
 
   <!-- youtube動画 -->
  <%
@@ -107,19 +102,6 @@
       </div>
   </div>
 
-  <div class="container" style="margin-bottom:100px;">
-    <h3>Mリーグ動画</h3>
-    <div class="border rounded" style="padding:50px;background-color:white;">
-      <div class="youtube mb-5">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/V1WQ6aGdYns" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="youtube">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/mmlz9sg4_zY?start=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>  
-  </div>  
-
-
   <div class="container mb-5">
     <h3>麻雀ニュース</h3>
       <div class="border rounded" style="padding:50px;background-color:white;">
@@ -129,9 +111,11 @@
       </div>
   </div>
   
-
 <!-- 非ログイン時 -->
-<% else %>
+
+ <%
+=begin%>
+ <% else %>
 
 <div class="card" style="max-width: 100%;">
   <%= image_tag asset_path("PAK57_paiwouragaeshisi-pai",alt: "トップ画像" )%>
@@ -173,7 +157,9 @@
       </div>
     </div>
   </div>
-</div>
+</div> 
 
 <% end %>
 
+<%
+=end%>

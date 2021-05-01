@@ -1,4 +1,8 @@
 <!-- いいね機能　-->
+
+<!-- ログイン時いいね機能が使える　-->
+<% if user_signed_in? %>
+
 <div id="post_<%= @post.id %>">
   <% if current_user.liked_by?(@post.id) %>
     <td>
@@ -16,3 +20,14 @@
     </td>
   <% end %>
 </div>
+
+<!-- 非ログイン時、いいねボタンといいね数を表示。押下するとログインページに飛ばす -->
+<% else %>
+
+  <%= link_to  new_user_session_path, class: "btn btn-light" do%>
+    <i class="fa fa-heart unlike-btn"></i> いいね 
+    <%= @post.likes.count %>
+  <% end %>
+
+<% end %>
+  
