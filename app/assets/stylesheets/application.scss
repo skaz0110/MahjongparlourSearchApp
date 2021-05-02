@@ -142,3 +142,32 @@ header.sticky-top {
   @extend .alert-danger;
 }
 
+// 検索の都道府県フォーム
+.selectbox {
+  width:100%;
+  margin:1em auto;
+position:relative;
+}
+select{
+-webkit-appearance:none;
+  appearance:none;
+width:100%;
+padding:1em 1em;
+box-sizing:border-box;
+font-size:1em;
+border:#ccc 1px solid;
+border-radius:0;
+background:#fff;
+}
+.selectbox::after{
+content:"";
+display:block;
+width:10px;
+height:10px;
+position:absolute;
+right:5%;
+top:35%;
+border-bottom:#333 2px solid;
+border-right:#333 2px solid;
+transform:rotate(45deg)translateY(-30%);
+}

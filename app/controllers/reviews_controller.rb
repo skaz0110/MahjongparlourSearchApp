@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
 
   before_action :set_search
-
+  PER_PAGE = 10
   def index
     
     @post = Post.find(params[:post_id])
