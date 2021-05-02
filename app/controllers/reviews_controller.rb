@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
 
-  # 表示数
-  PER_PAGE = 10
+  before_action :set_search
 
   def index
     
@@ -52,4 +51,7 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:content,:star, :post_id) 
   end
 
+  def set_search
+    @q = Post.ransack(params[:q])
+  end
 end

@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 
+  before_action :set_search
   # 表示数
   PER_PAGE = 10
 
@@ -28,4 +29,8 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:content,:post_id)
   end
   
+  def set_search
+    @q = Post.ransack(params[:q])
+  end
+
 end

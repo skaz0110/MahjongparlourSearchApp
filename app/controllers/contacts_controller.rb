@@ -1,4 +1,7 @@
 class ContactsController < ApplicationController
+  
+  before_action :set_search
+
   def new
     @contact = Contact.new
   end
@@ -19,5 +22,9 @@ class ContactsController < ApplicationController
   private
   def contact_params
     params.require(:contact).permit(:name, :email, :content)
+  end
+
+  def set_search
+    @q = Post.ransack(params[:q])
   end
 end

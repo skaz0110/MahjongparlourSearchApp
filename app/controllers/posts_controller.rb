@@ -1,24 +1,17 @@
 class PostsController < ApplicationController
   
-  PER_PAGE = 5
+  before_action :set_search
+  PER_PAGE = 10
 
-    def index
-
-      # 検索結果の投稿を取得
-      @q = Post.ransack(params[:q])
-      @posts = @q.result.page(params[:page]).per(PER_PAGE)
-            
+    def index            
     end
 
     def new
-      
       @post = Post.new
-
     end
 
     def edit
       @post = Post.find(params[:id])
-
     end
     
     def update  
@@ -37,10 +30,8 @@ class PostsController < ApplicationController
       end
     end
 
-    def show
-      
-      @post = Post.find(params[:id])
-              
+    def show     
+      @post = Post.find(params[:id])     
     end
 
     def create
@@ -64,5 +55,10 @@ class PostsController < ApplicationController
       def post_params
           params.require(:post).permit(:content,:image,:title,:address1,:address2,:address3,:postalcode,:prefecturecode,:phonenumber,:access,:openinghours,:regularholiday,:gamefree,:gameset)
       end
-    
+      
+      def set_search
+        @q = Post.ransack(params[:q])
+        @posts = @q.result.page(params[:page]).per(PER_PAGE)
+      end
+         
 end
