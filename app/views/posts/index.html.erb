@@ -1,9 +1,21 @@
-<div class="mx-auto" style="width: 400px;margin-top:70px;" >
-    <%= search_form_for @q ,url: posts_path do |f| %>
-      <%= f.search_field :title_cont ,class:"form-control mr-sm-2"%>
-      <%= f.submit ("検索"),class:"btn btn-outline-success my-2 my-sm-0"%>
-    <% end %>
-  </div>
+
+<div class="container mt-5">
+	<div class="border rounded" style="padding:50px;background-color:white;">
+		<div class="mx-auto" style="width: 400px;" >
+			<%= search_form_for @q  do |f| %>
+			<label>〈 キーワード 〉</label>
+				<%= f.search_field :title_cont ,class:"form-control mr-sm-2 pt-4 pb-4",style:"border-radius:10px;",placeholder:"店名"%>
+				<div class="selectbox">
+				<label>〈 地域 〉</label>
+					<%= f.collection_select :prefecturecode_eq , Prefecture.all, :id, :name,{include_blank: "選択する"}%>
+				</div>
+				<div class="text-right">	
+					<%= f.submit ("検索"),class:"btn btn-info my-2 my-sm-0 w-25"%>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
 
 <div class="container mt-5">
 	<h3>雀荘検索結果一覧</h3>
@@ -28,6 +40,18 @@
 	<% end %>
 </div>
 <!-- ページネーション -->
-<div class="mx-auto mt-5" style="width: 200px;">
+<div class="mx-auto mt-5 " style="width: 200px;">
 	<%= paginate @posts %>
 </div>
+
+<form class="form-inline">
+  <div class="form-group mb-2">
+    <label for="staticEmail2" class="sr-only">Email</label>
+    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="email@example.com">
+  </div>
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="inputPassword2" class="sr-only">Password</label>
+    <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+</form>
