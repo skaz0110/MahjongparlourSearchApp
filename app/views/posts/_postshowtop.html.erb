@@ -6,7 +6,11 @@
     <h2><strong><%= @post.title %></strong></h2>
   </div>
   <div class="card-text">
-    口コミ<%= @post.reviews.count%>件/<%=@post.reviews.average(:star).to_f.round(1)%>
+    <%= link_to post_reviews_path(@post) do %>
+      <div class="Editlink">
+        口コミ<%= @post.reviews.count%>件 / <%=@post.reviews.average(:star).to_f.round(1)%>
+      </div>
+    <%end%>
   
     <!--合計の星レビューを表示-->
     <%= render 'posts/totalreviewstar'%>

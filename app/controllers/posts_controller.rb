@@ -58,6 +58,7 @@ class PostsController < ApplicationController
       
       def set_search
         @q = Post.ransack(params[:q])
+        @r = Review.ransack(params[:r])
         @posts = @q.result.page(params[:page]).per(PER_PAGE)
       end
          
