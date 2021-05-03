@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
 
-  before_action :set_search
+  before_action :login_check
   PER_PAGE = 10
   def index
     
@@ -51,7 +51,4 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:content,:star, :post_id) 
   end
 
-  def set_search
-    @q = Post.ransack(params[:q])
-  end
 end

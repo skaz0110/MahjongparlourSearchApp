@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   
-  before_action :set_search
-  # before_action :move_to_signed_in, except: [:new]
+  before_action :set_postsearch
+  before_action :login_check, only: [:new,:update,:edit,:create]
   PER_PAGE = 10
 
     def index            
@@ -58,17 +58,9 @@ class PostsController < ApplicationController
           params.require(:post).permit(:content,:image,:title,:address1,:address2,:address3,:postalcode,:prefecturecode,:phonenumber,:access,:openinghours,:regularholiday,:gamefree,:gameset)
       end
       
-      def set_search
+      def set_postsearch
         @q = Post.ransack(params[:q])
-        @r = Review.ransack(params[:r])
         @posts = @q.result.page(params[:page]).per(PER_PAGE)
       end
-
-      def move_to_signed_in
-        unless user_signed_in?
-          #サインインしていないユーザーはログインページが表示される
-          redirect_to  new_user_session_path
-        end
-      end
-         
+       
 end
