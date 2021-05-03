@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   
   before_action :set_search
+  # before_action :move_to_signed_in, except: [:new]
   PER_PAGE = 10
 
     def index            
@@ -30,7 +31,8 @@ class PostsController < ApplicationController
       end
     end
 
-    def show     
+    def show  
+      
       @post = Post.find(params[:id])     
     end
 
@@ -60,6 +62,13 @@ class PostsController < ApplicationController
         @q = Post.ransack(params[:q])
         @r = Review.ransack(params[:r])
         @posts = @q.result.page(params[:page]).per(PER_PAGE)
+      end
+
+      def move_to_signed_in
+        unless user_signed_in?
+          #サインインしていないユーザーはログインページが表示される
+          redirect_to  new_user_session_path
+        end
       end
          
 end

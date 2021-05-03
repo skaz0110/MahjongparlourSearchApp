@@ -1,5 +1,9 @@
 <!-- ログイン時 -->
-<% if user_signed_in? %>
+<%
+=begin%>
+ <% if user_signed_in? %>  
+<%
+=end%>
 
   <div class="container mt-5">
     <h3>新着雀荘</h3>  
@@ -108,7 +112,10 @@
   </div>
   
 <!-- 非ログイン時 -->
-<% else %>
+
+ <%
+=begin%>
+ <% else %>
 
 <div class="card" style="max-width: 100%;">
   <%= image_tag asset_path("PAK57_paiwouragaeshisi-pai",alt: "トップ画像" )%>
@@ -150,7 +157,9 @@
       </div>
     </div>
   </div>
-</div>
+</div> 
 
 <% end %>
 
+<%
+=end%>
