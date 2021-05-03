@@ -6,7 +6,7 @@
           <%= form_with model:[@post, @comment] do |form|  %>
             <%= form.text_area :content ,class:"form-control",placeholder:"今日は役満振り込んだ...。" %>
             <%= form.hidden_field :post_id, :value => params[:post_id] %>
-            <%= form.submit "つぶやく",class:"btn btn-primary mt-2"%>
+            <%= form.submit "つぶやく",class:"btn btn-info mt-2"%>
           <% end %>
         </div> 
         <div>
