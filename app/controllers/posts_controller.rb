@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   
-  before_action :set_search
+  before_action :set_postsearch
+  before_action :login_check, only: [:new,:update,:edit,:create]
   PER_PAGE = 10
 
     def index            
@@ -30,7 +31,8 @@ class PostsController < ApplicationController
       end
     end
 
-    def show     
+    def show  
+      
       @post = Post.find(params[:id])     
     end
 
@@ -56,10 +58,9 @@ class PostsController < ApplicationController
           params.require(:post).permit(:content,:image,:title,:address1,:address2,:address3,:postalcode,:prefecturecode,:phonenumber,:access,:openinghours,:regularholiday,:gamefree,:gameset)
       end
       
-      def set_search
+      def set_postsearch
         @q = Post.ransack(params[:q])
-        @r = Review.ransack(params[:r])
         @posts = @q.result.page(params[:page]).per(PER_PAGE)
       end
-         
+       
 end

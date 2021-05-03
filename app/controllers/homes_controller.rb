@@ -50,7 +50,6 @@ class HomesController < ApplicationController
       @secondnews = page.links[92]
       @thirdnews  = page.links[97]
      
-     
   end
   
 end
