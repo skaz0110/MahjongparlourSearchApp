@@ -2,9 +2,11 @@
   <div class="card-body">
     <h3 class="mt-1 mb-3">ログイン</h3>
 
-    <%= link_to "ゲストユーザーでログイン", users_guest_sign_in_path,  method: :post,class: "btn btn-info btn-block" %>
-    <%= link_to user_twitter_omniauth_authorize_path,class: 'btn btn-info btn-block ' do %>
-      <i class="fab fa-twitter fa-1x"></i> Twitterでログイン
+    <%= link_to   users_guest_sign_in_path,  method: :post,class: "btn btn-light btn-block" do%>
+    <i class="fa fa-user" style="color:#696969;"></i> ゲストユーザーでログイン
+    <%end%>
+    <%= link_to user_twitter_omniauth_authorize_path,class: 'btn btn-light btn-block ' do %>
+      <i class="fab fa-twitter fa-1x" style="color:#00aced;"></i> Twitterでログイン
     <% end %>
     <hr>
     
