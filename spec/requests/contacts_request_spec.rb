@@ -7,6 +7,11 @@ RSpec.describe "Contacts", type: :request do
     
     context "お問い合わせページが表示されている" do
     
+      let(:user) { create(:user) }
+
+      before do
+        sign_in user
+      end
       it "リクエストが成功する" do
         subject     
         expect(response).to have_http_status(:ok)
@@ -21,6 +26,11 @@ RSpec.describe "Contacts", type: :request do
     context "パラメータが正常なとき" do
 
       let(:params) { { contact: attributes_for(:contact) } }
+      let(:user) { create(:user) }
+
+      before do
+        sign_in user
+      end
       
       it "リクエストが成功する" do
         subject 
@@ -40,6 +50,11 @@ RSpec.describe "Contacts", type: :request do
     context "パラメータが異常なとき" do
 
       let(:params) { { contact: attributes_for(:contact, :contactinvalid) } }
+      let(:user) { create(:user) }
+
+      before do
+        sign_in user
+      end
 
       it "リクエストが成功する" do
         subject 

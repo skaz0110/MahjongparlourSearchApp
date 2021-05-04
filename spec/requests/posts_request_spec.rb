@@ -70,7 +70,12 @@ RSpec.describe "Posts", type: :request do
     subject { get(new_post_path) }
     
     context "投稿が存在するとき" do
-      
+    
+      let(:user) { create(:user) }
+
+      before do
+        sign_in user
+      end
       it "リクエストが成功する" do
         subject     
         expect(response).to have_http_status(:ok)
@@ -132,6 +137,11 @@ RSpec.describe "Posts", type: :request do
     context "投稿が存在するとき" do
       let(:post) { create(:post) }
       let(:post_id) { post.id }
+      let(:user) { create(:user) }
+
+      before do
+        sign_in user
+      end
   
       it "リクエストが成功する" do
         subject
@@ -171,6 +181,11 @@ RSpec.describe "Posts", type: :request do
 
     context 'パラメータが正常な場合' do
       let(:params) { { post: attributes_for(:post) } }
+      let(:user) { create(:user) }
+
+      before do
+        sign_in user
+      end
 
       it 'リクエストが成功する' do
         subject
@@ -215,6 +230,11 @@ RSpec.describe "Posts", type: :request do
 
     context 'パラメータが異常な場合' do
       let(:params) { { post: attributes_for(:post, :invalid) } }
+      let(:user) { create(:user) }
+
+      before do
+        sign_in user
+      end
 
       it 'リクエストが成功する' do
         subject

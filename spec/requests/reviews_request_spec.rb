@@ -96,6 +96,11 @@ RSpec.describe "Reviews", type: :request do
 
     let!(:post) { create(:post) }
     let!(:review) { create(:review, post: post) }
+    let(:user) { create(:user) }
+
+      before do
+        sign_in user
+      end
 
     context 'パラメータが正常な場合' do
       it 'リクエストが成功する' do
