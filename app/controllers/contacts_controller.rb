@@ -1,5 +1,4 @@
 class ContactsController < ApplicationController
-  
   before_action :login_check
 
   def new
@@ -16,10 +15,10 @@ class ContactsController < ApplicationController
     end
   end
 
-  def thanks
-  end
+  def thanks; end
 
   private
+
   def contact_params
     params.require(:contact).permit(:name, :email, :content)
   end

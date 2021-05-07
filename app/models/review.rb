@@ -9,5 +9,4 @@ class Review < ApplicationRecord
   def reviewed_by?(user)
     reviews.where(user_id: user.id).exists?
   end
-
 end

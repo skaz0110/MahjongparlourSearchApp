@@ -1,40 +1,38 @@
 require 'rails_helper'
 
-RSpec.describe "Likes", type: :request do
-
-  describe "GET #index" do
+RSpec.describe 'Likes', type: :request do
+  describe 'GET #index' do
     subject { get(likes_path) }
-    
-    context "いいねした投稿が存在するとき" do
-      
-      let(:post) { create_list(:post,3) }
+
+    context 'いいねした投稿が存在するとき' do
+      let(:post) { create_list(:post, 3) }
       let(:user) { create(:user) }
 
       before do
         sign_in user
-        
-        create(:like,user: user, post: post.first)
-        create(:like,user: user, post: post.second)
-        create(:like,user: user, post: post.last)
+
+        create(:like, user: user, post: post.first)
+        create(:like, user: user, post: post.second)
+        create(:like, user: user, post: post.last)
       end
 
-      it "リクエストが成功する" do
-        subject     
+      it 'リクエストが成功する' do
+        subject
         expect(response).to have_http_status(:ok)
       end
 
-      it "post.title が表示されている" do
-        subject        
-        expect(response.body).to include(*Post.pluck(:title)) 
+      it 'post.title が表示されている' do
+        subject
+        expect(response.body).to include(*Post.pluck(:title))
       end
     end
   end
 
-  #TODO 非同期のテストを実施
+  # TODO: 非同期のテストを実施
   # describe "POST #create" do
-      
+
   #   let(:parapost) { create(:post) }
-  #   let(:user) { create(:user) } 
+  #   let(:user) { create(:user) }
   #   let(:like) { create(:like, user_id: user.id, post_id: parapost.id) }
 
   #   before do
@@ -46,7 +44,7 @@ RSpec.describe "Likes", type: :request do
   #     it "リクエストが成功する" do
   #       post :create, format: :json,
   #       params: { post_id: parapost.id, user_id: user.id }
-  #       expect(response.content_type).to eq "application/json"      
+  #       expect(response.content_type).to eq "application/json"
   #     end
 
   #     it "コメントが保存される" do
@@ -64,8 +62,8 @@ RSpec.describe "Likes", type: :request do
   #     let(:params) { { comment: attributes_for(:comment,:commentinvalid) } }
 
   #     it "リクエストが成功する" do
-  #       subject 
-  #       expect(response).to have_http_status(302)      
+  #       subject
+  #       expect(response).to have_http_status(302)
   #     end
 
   #     it "コメントが保存されない" do
@@ -81,5 +79,4 @@ RSpec.describe "Likes", type: :request do
 
   # describe "POST #create" do
   # end
-  
 end
