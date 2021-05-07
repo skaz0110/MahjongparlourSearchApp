@@ -14,8 +14,15 @@ class ReviewsController < ApplicationController
   def new 
 
     @post = Post.find(params[:post_id])
+    
+    # 口コミ投稿済みの場合リダイレクトさせる
+    if @post.reviews.count != 0
+      
+      redirect_to post_reviews_path(params[:post_id]), alert: "口コミ投稿済みです！"
+      
+    end  
+    
     @review = current_user.reviews.new
-
   end
 
   def create
