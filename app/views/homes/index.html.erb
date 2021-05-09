@@ -6,7 +6,7 @@
 =end%>
 
   <div class="container mt-5">
-    <h3>新着雀荘</h3>  
+    <h3><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 新着雀荘</h3>  
       <div class="border rounded" style="padding:50px;background-color:white;margin-bottom:100px;"> 
         <div class="row">
           <% @posts.each do |post|%>
@@ -48,27 +48,9 @@
 <%
 =end%>
 
-
-  <!-- 新着のコメント -->
-  <div class="container mb-5">
-    <h3>新着雀活</h3>
-      <div class="border rounded" style="padding:50px;background-color:white;">
-        <% @comments.each do |comment| %>
-          <p>
-            <hr>
-              <img  class = "icon_image" height="40" src="<%= comment.user.image %>">
-              <%= comment.user.username %>
-              <%= l comment.created_at %>
-          </p>
-            <p>【<%= comment.post.title%>】</p>
-            <%= comment.content %>
-        <% end %>
-      </div>
-  </div>
-
   <!-- 新着のレビュー -->
   <div class="container mb-5">
-    <h3>新着レビュー</h3>
+    <h3><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 新着レビュー</h3>
       <div class="border rounded" style="padding:50px;background-color:white;">
         <% @reviews.each do |review| %> 
           <div class="card mt-3" >
@@ -102,8 +84,26 @@
       </div>
   </div>
 
+  <!-- 新着のコメント -->
   <div class="container mb-5">
-    <h3>麻雀ニュース</h3>
+    <h3><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 新着雀活</h3>
+      <div class="border rounded" style="padding:50px;background-color:white;">
+        <% @comments.each do |comment| %>
+          <p>
+            <hr>
+              <img  class = "icon_image" height="40" src="<%= comment.user.image %>">
+              <%= comment.user.username %>
+              <%= l comment.created_at %>
+          </p>
+            <p>【<%= comment.post.title%>】</p>
+            <%= comment.content %>
+        <% end %>
+      </div>
+  </div>
+
+  <!-- ニュース -->
+  <div class="container mb-5">
+    <h3><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 麻雀ニュース</h3>
       <div class="border rounded" style="padding:50px;background-color:white;">
         <p><a href="<%= @firstnews.href  %>"><%= @firstnews.text  %></a></p>
         <p><a href="<%= @secondnews.href %>"><%= @secondnews.text %></a></p>
