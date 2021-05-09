@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    models:
+      # view側： User.model_name.human => "ユーザ" / t("activerecord.models.user")と同じ
+      post: 店舗情報
+      review: レビュー 
+    # model毎に定義したいattributesを記述
+    attributes:
+        post:
+          title: 店舗名
+          image: 画像
+          content: お店の紹介
+          access: アクセス
+          openinghours: 営業時間
+          regularholiday: 定休日
+          gamefree: フリー代
+          gameset: セット代
+          phonenumber: 電話番号
+          prefecturecode: 都道府県
+          postalcode: 郵便番号
+          address1: 住所１
+          address2: 住所２
+          address3: 住所３
+        review:
+          star: 星評価
+          content: コメント
+
+          
+  # 全てのmodelで共通して使用するattributesを定義
+  attributes:
+    created_at: 作成日
+    updated_at: 更新日
