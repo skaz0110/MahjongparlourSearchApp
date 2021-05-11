@@ -47,59 +47,64 @@
   </div>   
 <%
 =end%>
-
-  <!-- 新着のレビュー -->
+   
   <div class="container mb-5">
-    <h3><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 新着レビュー</h3>
-      <div class="border rounded" style="padding:50px;background-color:white;">
-        <% @reviews.each do |review| %> 
-          <div class="card mt-3" >
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <div style="height: 10px;"><%= link_to  review.post.title ,post_path(review.post),class:"Editlink" %> の口コミ</div>
-                  <hr>
-                  <!--/星評価-->
-                  <div id="star-rate-<%= review.id %>">
-                    <script>
-                      $('#star-rate-<%= review.id %>').raty({
-                        size: 36,
-                        starOff:  '<%= asset_path('star-off.png') %>',
-                        starOn :  '<%= asset_path('star-on.png') %>',
-                        starHalf: '<%= asset_path('star-half.png') %>',
-                        half: true,
-                        readOnly: true,
-                        score: `<%= review.star %>`,             
-                      })
-                    </script>
-                    <%= review.star %>
-                  </div>
-                  <!--/星評価-->
-              </li>
-              <li class="list-group-item">    
-                <%= safe_join(review.content.split("\n"),tag(:br)) %>
-              </li>    
-            </ul>
-          </div>
-        <% end %> 
-      </div>
-  </div>
-
-  <!-- 新着のコメント -->
-  <div class="container mb-5">
-    <h3><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 新着雀活</h3>
-      <div class="border rounded" style="padding:50px;background-color:white;">
-        <% @comments.each do |comment| %>
-          <p>
+    <div class="row">
+      <!-- 新着のコメント -->
+      <div class="col-xs-12 col-md-4">  
+        <h3><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 雀活</h3>
+        <div class="border rounded" style="padding:50px;background-color:white;">
+          <% @comments.each do |comment| %>
+            <p>
             <hr>
               <img  class = "icon_image" height="40" src="<%= comment.user.image %>">
               <%= comment.user.username %>
               <%= l comment.created_at %>
-          </p>
+            </p>
             <p>【<%= comment.post.title%>】</p>
-            <%= comment.content %>
-        <% end %>
+            <%= safe_join(comment.content.split("\n"),tag(:br)) %>
+          <% end %>
+        </div>
       </div>
+
+  <!-- 新着のレビュー -->
+      <div class="col-xs-12 col-md-8">
+        <h3><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 口コミ</h3>
+          <div class="border rounded" style="padding:50px;background-color:white;">
+            <% @reviews.each do |review| %> 
+              <div class="card mt-3" >
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <div style="height: 10px;"><%= link_to  review.post.title ,post_path(review.post),class:"Editlink" %> の口コミ</div>
+                      <hr>
+                      <!--/星評価-->
+                      <div id="star-rate-<%= review.id %>">
+                        <script>
+                          $('#star-rate-<%= review.id %>').raty({
+                            size: 36,
+                            starOff:  '<%= asset_path('star-off.png') %>',
+                            starOn :  '<%= asset_path('star-on.png') %>',
+                            starHalf: '<%= asset_path('star-half.png') %>',
+                            half: true,
+                            readOnly: true,
+                            score: `<%= review.star %>`,             
+                          })
+                        </script>
+                        <%= review.star %>
+                      </div>
+                      <!--/星評価-->
+                  </li>
+                  <li class="list-group-item">    
+                    <%= safe_join(review.content.split("\n"),tag(:br)) %>
+                  </li>    
+                </ul>
+              </div>
+            <% end %> 
+          </div>
+      </div>
+    </div>
   </div>
+  
 
   <!-- ニュース -->
   <div class="container mb-5">

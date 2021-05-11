@@ -44,5 +44,9 @@
 # ShopDetail.create!(address: '川崎市', phonenumber: '0120', access: '川崎駅から北に２分', openinghours: 'オープン〜ラスト', regularholiday: '日曜',
 #                    gamefree: '６００円', gameset: '２００円')
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+# AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+5.times do
+  Like.create!(user_id:1,post_id:54)
+  Like.create!(user_id:1,post_id:53)
+end
 puts '初期データの投入に成功しました！'
