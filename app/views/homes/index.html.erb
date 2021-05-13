@@ -6,8 +6,8 @@
 =end%>
 
   <div class="container mt-5">
-    <h3><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 新着雀荘</h3>  
-      <div class="border rounded" style="padding:50px;background-color:white;margin-bottom:100px;"> 
+    <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 新着雀荘</h3></strong>
+      <div class="border rounded" style="padding:50px;background-color:white;margin-bottom:50px;"> 
         <div class="row">
           <% @posts.each do |post|%>
             <div class="col-12 col-md-6 col-lg-4 mb-4">
@@ -52,7 +52,7 @@
     <div class="row">
       <!-- 新着のコメント -->
       <div class="col-xs-12 col-md-4">  
-        <h3><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 雀活</h3>
+        <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 雀活</h3></strong>
         <div class="border rounded" style="padding:50px;background-color:white;">
           <% @comments.each do |comment| %>
             <p>
@@ -69,7 +69,7 @@
 
   <!-- 新着のレビュー -->
       <div class="col-xs-12 col-md-8">
-        <h3><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 口コミ</h3>
+        <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 口コミ</h3></strong>
           <div class="border rounded" style="padding:50px;background-color:white;">
             <% @reviews.each do |review| %> 
               <div class="card mt-3" >
@@ -108,7 +108,7 @@
 
   <!-- ニュース -->
   <div class="container mb-5">
-    <h3><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 麻雀ニュース</h3>
+    <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 麻雀ニュース</h3></strong>
       <div class="border rounded" style="padding:50px;background-color:white;">
         <p><a href="<%= @firstnews.href  %>"><%= @firstnews.text  %></a></p>
         <p><a href="<%= @secondnews.href %>"><%= @secondnews.text %></a></p>
