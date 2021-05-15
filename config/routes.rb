@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   
   devise_for :users, :controllers => {
-    # このpathを通して外部API認証が行われる。
+    # このpathを通して外部API認証を行う
     :omniauth_callbacks => 'users/omniauth_callbacks'
    }
 
@@ -24,6 +24,6 @@ Rails.application.routes.draw do
     get "/thanks" => "contacts#thanks"
   end
   
-  
+  get '*path', controller: 'application', action: 'render_404'
   
 end
