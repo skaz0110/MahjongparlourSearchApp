@@ -10,7 +10,7 @@
           <% end %>
         </div> 
         <div>
-          <% @comments.each do |comment| %>
+          <% @comments.preload(:user).each do |comment| %>
             <p><hr>
             <%= comment.user.username %>
             <div style="font-size:12px; color: #808080;"><%= l comment.created_at %></div>
