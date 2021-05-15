@@ -6,7 +6,7 @@
     全<%=@reviews.total_count%>件
   </div>
   <!-- 口コミの表示 -->
-  <% @reviews.each do |review| %> 
+  <% @reviews.preload(:user).each do |review| %> 
     <div class="card mt-3" >
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
