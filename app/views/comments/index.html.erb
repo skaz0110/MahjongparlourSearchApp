@@ -12,6 +12,7 @@
         <div>
           <% @comments.preload(:user).each do |comment| %>
             <p><hr>
+            <img  height="30" src="<%= comment.user.image %>"class = "icon_image mb-2">
             <%= comment.user.username %>
             <div style="font-size:12px; color: #808080;"><%= l comment.created_at %></div>
             </p> 
