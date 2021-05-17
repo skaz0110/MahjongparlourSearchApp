@@ -1,4 +1,4 @@
-<div class="container mt-5"style="margin-bottom: 300px;">
+<div class="container mt-5"style="margin-bottom: 200px;">
   <table class="table">
     <thead class="thead text-white"style="background-color: #808080;">
       <tr>
@@ -7,11 +7,10 @@
       </tr>
     </thead>
     <tbody>
-    <% @likes.each.with_index(1) do |like,index|%>
-      <% post = Post.find(like.post_id) %>
+    <% @likes.preload(:post).each.with_index(1) do |like,index|%>
       <tr>
-        <td><%= link_to post.title ,post_path(post),class: "Editlink"%></td>
-        <td><%= post.content.truncate(50)%></td>
+        <td><%= link_to like.post.title,post_path(like.post) ,class: "Editlink"%></td>
+        <td><%= like.post.content.truncate(50)%></td>
       </tr>
     <%end%>
       </tr>
