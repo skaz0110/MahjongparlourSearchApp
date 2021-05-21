@@ -3,7 +3,7 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 
 # 日本語のダミーデータを使用
@@ -11,7 +11,7 @@ Faker::Config.locale = :ja
 
 # ログインユーザーを作成するため
 require 'devise'
-require File.expand_path("spec/support/controller_macros.rb")
+require File.expand_path('spec/support/controller_macros.rb')
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -39,7 +39,6 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
-
   # deviseのtest_helperとmacrosをcontroller内で使えるように
   config.include Devise::TestHelpers, type: :controller
   config.include ControllerMacros, type: :controller

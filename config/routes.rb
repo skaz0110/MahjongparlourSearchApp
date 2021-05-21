@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   
   devise_for :users, :controllers => {
-    # このpathを通して外部API認証が行われる。
+    # このpathを通して外部API認証を行う
     :omniauth_callbacks => 'users/omniauth_callbacks'
    }
 
@@ -13,17 +13,18 @@ Rails.application.routes.draw do
   end
   post  'like/:id' => 'likes#create',   as: 'create_like'
   resources :users, only: [:show]
-  resources :likes, only: [:index,:destroy]
+  resources :likes, only: [:index,:destroy,:create]
   resources :homes, only: [:index]
+  resources :ranks, only: [:index]
   resources :posts do
-    resources :reviews,   only: [:index,:create,:new,:destroy,:edit,:update]
-    resources :comments,  only: [:index,:create,:destroy,:edit,:update]
+    resources :reviews,   only: [:index,:create,:new,:destroy]
+    resources :comments,  only: [:index,:create,:new]
   end
 
   resource :contacts, only: [:new, :create] do
     get "/thanks" => "contacts#thanks"
   end
   
-  
+  get '*path', controller: 'application', action: 'render_404'
   
 end

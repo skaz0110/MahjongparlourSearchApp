@@ -1,6 +1,16 @@
 <div class="card col-sm-5 mx-auto mt-5">
   <div class="card-body">
     <h3 class="mt-1 mb-3">ログイン</h3>
+
+    <%= link_to   users_guest_sign_in_path,  method: :post,class: "btn btn-light btn-block" do%>
+    <i class="fa fa-user" style="color:#696969;"></i> ゲストユーザーでログイン
+    <%end%>
+    <%= link_to user_twitter_omniauth_authorize_path,class: 'btn btn-light btn-block ' do %>
+      <i class="fab fa-twitter fa-1x" style="color:#00aced;"></i> Twitterでログイン
+    <% end %>
+    <hr>
+    
+    <h3>メールアドレスでログイン</h3>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-group">
       <%= f.label :email, "メールアドレス", :class => "form-label" %>
@@ -9,7 +19,7 @@
  
     <div class="form-group">
       <%= f.label :password, "パスワード", :class => "form-label" %>
-      <%= link_to "パスワードを忘れた場合", new_user_password_path, :class => "float-right" %>
+      <%#<%= link_to "パスワードを忘れた場合", new_user_password_path, :class => "float-right" %>
       <%= f.password_field :password, :class => "form-control" %>
     <% if devise_mapping.rememberable? %>
     <div class="form-check">
@@ -20,7 +30,7 @@
     </div>
  
     <div class="actions">
-      <%= f.submit "ログイン", :class => "btn btn-primary btn-block" %>
+      <%= f.submit "ログイン", :class => "btn btn-info btn-block" %>
     </div>
     <% end %>
  

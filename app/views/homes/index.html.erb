@@ -1,16 +1,13 @@
 <!-- ログイン時 -->
-<% if user_signed_in? %>
-
-  <div class="mx-auto" style="width: 400px;margin-top:70px;" >
-    <%= search_form_for @q ,url: posts_path do |f| %>
-      <%= f.search_field :title_cont ,class:"form-control mr-sm-2"%>
-      <%= f.submit ("検索"),class:"btn btn-outline-success my-2 my-sm-0"%>
-    <% end %>
-  </div>
+<%
+=begin%>
+ <% if user_signed_in? %>  
+<%
+=end%>
 
   <div class="container mt-5">
-    <h3>新着雀荘</h3>  
-      <div class="border rounded" style="padding:50px;background-color:white;margin-bottom:100px;"> 
+    <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 新着雀荘</h3></strong>
+      <div class="border rounded" style="padding:50px;background-color:white;margin-bottom:50px;"> 
         <div class="row">
           <% @posts.each do |post|%>
             <div class="col-12 col-md-6 col-lg-4 mb-4">
@@ -19,7 +16,7 @@
                   <img class="card-img-top" src="<%= post.image %>">
                   <div class="card-body">
                     <div class="card-title">
-                      <strong><h5><%= post.title%></h5></strong>
+                      <h5><strong><%= post.title%></strong></h5>
                     </div>
                     <p class="card-text">
                       <%= post.content.truncate(100)%>
@@ -32,8 +29,6 @@
         </div>
       </div>
   </div>
-
-
 
   <!-- youtube動画 -->
  <%
@@ -52,76 +47,68 @@
   </div>   
 <%
 =end%>
-
-
-  <!-- 新着のコメント -->
+   
   <div class="container mb-5">
-    <h3>新着雀活</h3>
-      <div class="border rounded" style="padding:50px;background-color:white;">
-        <% @comments.each do |comment| %>
-          <p>
+    <div class="row">
+      <!-- 新着のコメント -->
+      <div class="col-xs-12 col-md-4">  
+        <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 雀活</h3></strong>
+        <div class="border rounded" style="padding:50px;background-color:white;">
+          <% @comments.each do |comment| %>
+            <p>
             <hr>
-              <img  height="40" src="<%= comment.user.image %>">
+              <img  class = "icon_image" height="40" src="<%= comment.user.image %>">
               <%= comment.user.username %>
               <%= l comment.created_at %>
-          </p>
+            </p>
             <p>【<%= comment.post.title%>】</p>
-            <%= comment.content %>
-        <% end %>
+            <%= safe_join(comment.content.split("\n"),tag(:br)) %>
+          <% end %>
+        </div>
       </div>
-  </div>
 
   <!-- 新着のレビュー -->
-  <div class="container mb-5">
-    <h3>新着レビュー</h3>
-      <div class="border rounded" style="padding:50px;background-color:white;">
-        <% @reviews.each do |review| %> 
-          <div class="card mt-3" >
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">
-                <div style="height: 10px;"><%= link_to  review.post.title ,post_path(review.post),class:"Editlink" %> の口コミ</div>
-                  <hr>
-                  <!--/星評価-->
-                  <div id="star-rate-<%= review.id %>">
-                    <script>
-                      $('#star-rate-<%= review.id %>').raty({
-                        size: 36,
-                        starOff:  '<%= asset_path('star-off.png') %>',
-                        starOn :  '<%= asset_path('star-on.png') %>',
-                        starHalf: '<%= asset_path('star-half.png') %>',
-                        half: true,
-                        readOnly: true,
-                        score: `<%= review.star %>`,             
-                      })
-                    </script>
-                    <%= review.star %>
-                  </div>
-                  <!--/星評価-->
-              </li>
-              <li class="list-group-item">    
-                <%= safe_join(review.content.split("\n"),tag(:br)) %>
-              </li>    
-            </ul>
+      <div class="col-xs-12 col-md-8">
+        <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 口コミ</h3></strong>
+          <div class="border rounded" style="padding:50px;background-color:white;">
+            <% @reviews.each do |review| %> 
+              <div class="card mt-3" >
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <div style="height: 10px;"><%= link_to  review.post.title ,post_path(review.post),class:"Editlink" %> の口コミ</div>
+                      <hr>
+                      <!--/星評価-->
+                      <div id="star-rate-<%= review.id %>">
+                        <script>
+                          $('#star-rate-<%= review.id %>').raty({
+                            size: 36,
+                            starOff:  '<%= asset_path('star-off.png') %>',
+                            starOn :  '<%= asset_path('star-on.png') %>',
+                            starHalf: '<%= asset_path('star-half.png') %>',
+                            half: true,
+                            readOnly: true,
+                            score: `<%= review.star %>`,             
+                          })
+                        </script>
+                        <%= review.star %>
+                      </div>
+                      <!--/星評価-->
+                  </li>
+                  <li class="list-group-item">    
+                    <%= safe_join(review.content.split("\n"),tag(:br)) %>
+                  </li>    
+                </ul>
+              </div>
+            <% end %> 
           </div>
-        <% end %> 
       </div>
+    </div>
   </div>
+  
 
-  <div class="container" style="margin-bottom:100px;">
-    <h3>Mリーグ動画</h3>
-    <div class="border rounded" style="padding:50px;background-color:white;">
-      <div class="youtube mb-5">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/V1WQ6aGdYns" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="youtube">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/mmlz9sg4_zY?start=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>  
-  </div>  
-
-
+  <!-- ニュース -->
   <div class="container mb-5">
-    <h3>麻雀ニュース</h3>
+    <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 麻雀ニュース</h3></strong>
       <div class="border rounded" style="padding:50px;background-color:white;">
         <p><a href="<%= @firstnews.href  %>"><%= @firstnews.text  %></a></p>
         <p><a href="<%= @secondnews.href %>"><%= @secondnews.text %></a></p>
@@ -129,9 +116,11 @@
       </div>
   </div>
   
-
 <!-- 非ログイン時 -->
-<% else %>
+
+ <%
+=begin%>
+ <% else %>
 
 <div class="card" style="max-width: 100%;">
   <%= image_tag asset_path("PAK57_paiwouragaeshisi-pai",alt: "トップ画像" )%>
@@ -173,7 +162,9 @@
       </div>
     </div>
   </div>
-</div>
+</div> 
 
 <% end %>
 
+<%
+=end%>

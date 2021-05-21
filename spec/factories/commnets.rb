@@ -8,6 +8,4 @@ FactoryBot.define do
   trait :commentinvalid do
     content { nil }
   end
-  
 end
-

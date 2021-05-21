@@ -79,6 +79,10 @@ gem 'mechanize'
 # 列挙
 gem 'active_hash'
 
+# 静的ページを作る
+gem 'high_voltage'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -97,6 +101,8 @@ group :development, :test do
   gem 'faker'
 
   gem 'rails-controller-testing'
+
+  gem 'rubocop-rails'
 
 end
 

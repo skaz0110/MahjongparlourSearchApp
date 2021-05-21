@@ -6,7 +6,11 @@
     <h2><strong><%= @post.title %></strong></h2>
   </div>
   <div class="card-text">
-    口コミ<%= @post.reviews.count%>件/<%=@post.reviews.average(:star).to_f.round(1)%>
+    <%= link_to post_reviews_path(@post) do %>
+      <div class="Editlink">
+        口コミ<%= @post.reviews.count%>件 / <%=@post.reviews.average(:star).to_f.round(1)%>
+      </div>
+    <%end%>
   
     <!--合計の星レビューを表示-->
     <%= render 'posts/totalreviewstar'%>
@@ -14,7 +18,7 @@
   </div>
   <div class="card-text text-right">
     <!--いいね機能の表示-->
-    <div class="mb-1">
+    <div class="mb-2">
       <%= render 'posts/post' %>
     </div>
     <!--口コミボタンの表示-->
@@ -22,7 +26,7 @@
       <%if @post.reviews.where(user_id:current_user).exists?%>
         <button class="btn btn-dark" disabled>口コミ投稿済み</button>
       <%else%>
-        <%= link_to   new_post_review_path(@post),class: 'btn btn-primary' do%>
+        <%= link_to   new_post_review_path(@post),class: 'btn btn-info' do%>
           <i class="fa fa-edit"></i> 口コミを書く
         <%end%>
       <%end%>   
