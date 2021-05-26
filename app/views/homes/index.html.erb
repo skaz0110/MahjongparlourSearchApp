@@ -48,7 +48,7 @@
       <div class="col-xs-12 col-md-4">  
         <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 雀活</h3></strong>
         <div class="border rounded" style="padding:50px;background-color:white;">
-          <% @comments.each do |comment| %>
+          <% @comments.eager_load(:post,:user).each do |comment| %>
             <p>
             <hr>
               <img  class = "icon_image" height="40" src="<%= comment.user.image %>">
@@ -65,7 +65,7 @@
       <div class="col-xs-12 col-md-8">
         <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 口コミ</h3></strong>
           <div class="border rounded" style="padding:50px;background-color:white;">
-            <% @reviews.each do |review| %> 
+            <% @reviews.eager_load(:post).each do |review| %> 
               <div class="card mt-3" >
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">
