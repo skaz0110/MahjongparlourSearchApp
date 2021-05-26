@@ -1,9 +1,3 @@
-<!-- ログイン時 -->
-<%
-=begin%>
- <% if user_signed_in? %>  
-<%
-=end%>
 
   <div class="container mt-5">
     <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 新着雀荘</h3></strong>
@@ -54,7 +48,7 @@
       <div class="col-xs-12 col-md-4">  
         <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 雀活</h3></strong>
         <div class="border rounded" style="padding:50px;background-color:white;">
-          <% @comments.each do |comment| %>
+          <% @comments.eager_load(:post,:user).each do |comment| %>
             <p>
             <hr>
               <img  class = "icon_image" height="40" src="<%= comment.user.image %>">
@@ -71,7 +65,7 @@
       <div class="col-xs-12 col-md-8">
         <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 口コミ</h3></strong>
           <div class="border rounded" style="padding:50px;background-color:white;">
-            <% @reviews.each do |review| %> 
+            <% @reviews.eager_load(:post).each do |review| %> 
               <div class="card mt-3" >
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">
@@ -115,56 +109,3 @@
         <p><a href="<%= @thirdnews.href  %>"><%= @thirdnews.text  %></a></p>
       </div>
   </div>
-  
-<!-- 非ログイン時 -->
-
- <%
-=begin%>
- <% else %>
-
-<div class="card" style="max-width: 100%;">
-  <%= image_tag asset_path("PAK57_paiwouragaeshisi-pai",alt: "トップ画像" )%>
-  <div class="card-img-overlay text-center"style="margin-top:200px;">
-    <img height="150" src="/images/logo_transparent2.png" >  
-    <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
-    <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path,  method: :post,class: "nav-link" %> 
-    <%= link_to user_twitter_omniauth_authorize_path do %>
-      <i class="fab fa-twitter-square fa-2x"></i>
-    <% end %>
-  </div>
-</div>
-
-
-<div class="container-fluid mt-5">
-  <div class="card-deck">
-    <div class="card">
-    <%= image_tag asset_path("Mobile feed-amico",alt: "トップ画像" )%>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-    <div class="card">
-      <%= image_tag asset_path("Mobile feed-bro",alt: "トップ画像" )%>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-    <div class="card">
-      <%= image_tag asset_path("World Children's Day-pana",alt: "トップ画像" )%>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div> 
-
-<% end %>
-
-<%
-=end%>
