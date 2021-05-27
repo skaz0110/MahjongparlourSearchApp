@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <div class="card w-100" style="width: 18rem;padding:30px;">
-    <%= render 'postshowtop'%>
+    <%= render 'post_show_top'%>
     <div class="card-body">
       <h4 class="mb-4"><i class="fa fa-circle "  style="color:#17a2b8;"></i> <strong>お店のコメント</strong></h4>
         <p class="card-text mb-5"><%= safe_join(@post.content.split("\n"),tag(:br)) %></p>
