@@ -6,6 +6,8 @@
 
 URL： [https://mahjongparlour-go.com](http://mahjongparlour-go.com/)
 
+ゲストユーザーログインを用意してあります。
+
 # アプリ概要
 * 雀荘を探す
 
