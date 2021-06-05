@@ -110,11 +110,16 @@ header.sticky-top {
 }
 
 // ボーダーとカードのに影を付ける
-.border.rounded {
+.border {
   box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
+  border-radius: 20px;
+  background-color:white;
 }
 .card.w-100{
   box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2); 
+  width: 18rem;
+  padding:30px;
+  border-radius: 20px;
 } 
 .mx-auto.footer{
   margin: 150px;
