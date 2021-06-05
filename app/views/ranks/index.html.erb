@@ -3,7 +3,7 @@
 	<% @sortReviewAverage.first(5).each do |post|%>
   <%post = @posts.find(post[0])%>
   <%ave = post.reviews.average(:star).to_f.round(1)%>
-		<div class="card">
+		<div class="card w-100 mb-5">
 			<div class="row no-gutters"style="margin: 30px">
 			<div class="col-md-4 my-auto">
 				<%= link_to post_path(post) ,class: "Editlink" do%>
