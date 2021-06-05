@@ -1,28 +1,30 @@
-<div class="card col-sm-8 mx-auto mt-5 p-4">
+<div class="card col-sm-8 mx-auto mt-5 p-5" style="border-radius: 20px;">
 
     <div class="d-flex align-items-center">
-    <h1>口コミ投稿</h1>
+    <h2><i class="far fa-comment-dots"style="color:#17a2b8;"></i> <strong>口コミ投稿</strong> </h2>
     <div class="ml-auto posts_button">
+			<%= link_to '戻る', :back , class:"btn btn-outline-secondary"%>
     </div>
-    </div>
+    </div><hr>
+
 
     <%= form_with(model:[@post, @review], method: :post) do |f|  %>
     <%= render 'layouts/error_messages', model: f.object %>
-        <div class="form-group row" id="star">
-            <%= f.label :star,'初心者オススメ度', class:'col-md-3' %>
-            <%= f.hidden_field :star, id: :review_star%>
-            <%= f.hidden_field :post_id, value: @post.id %>
-        </div>
-        <div class="form-group">
-            <%= f.label :content, '投稿内容' %>
-            <%= f.text_area :content, class: 'form-control', rows:10,placeholder:"客層が若くて入りやすい！" %>
-            <small id=content-tip class="form-text text-muted">理由</small>
-        </div>
+        <h5>
+					<div class="form-group row mt-3" id="star">
+						<%= f.label :star,'初心者オススメ度', class:'col-md-3'%>
+						<%= f.hidden_field :star, id: :review_star%>
+						<%= f.hidden_field :post_id, value: @post.id %>
+					</div>
+        </h5>
+        <h5>
+					<div class="form-group">
+						<%= f.label :content, 'コメント' %>
+						<%= f.text_area :content, class: 'form-control', rows:10,placeholder:"客層が若くて入りやすい！" %>
+					</div>
+				</h5>
         <%= f.submit '投稿する', class: 'btn btn-info btn-block' %>
-        <small id="submit-tip" class="form-text text-muted">
-            投稿する前に投稿内容を見直してください!
-        </small>
-        
+
         <script>
           $('#star').raty({
           size : 36,
