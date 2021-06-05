@@ -1,7 +1,7 @@
 
   <div class="container mt-5">
     <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 新着雀荘</h3></strong>
-      <div class="border rounded" style="padding:50px;background-color:white;margin-bottom:50px;"> 
+      <div class="border" style="padding:50px;margin-bottom:50px;"> 
         <div class="row">
           <% @posts.each do |post|%>
             <div class="col-12 col-md-6 col-lg-4 mb-4">
@@ -47,7 +47,7 @@
       <!-- 新着のコメント -->
       <div class="col-xs-12 col-md-4">  
         <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 雀活</h3></strong>
-        <div class="border rounded" style="padding:50px;background-color:white;">
+        <div class="border" style="padding:50px;">
           <% @comments.eager_load(:post,:user).each do |comment| %>
             <p>
             <hr>
@@ -64,7 +64,7 @@
   <!-- 新着のレビュー -->
       <div class="col-xs-12 col-md-8">
         <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 口コミ</h3></strong>
-          <div class="border rounded" style="padding:50px;background-color:white;">
+          <div class="border" style="padding:50px;">
             <% @reviews.eager_load(:post).each do |review| %> 
               <div class="card mt-3" >
                 <ul class="list-group list-group-flush">
@@ -103,7 +103,7 @@
   <!-- ニュース -->
   <div class="container mb-5">
     <h3><strong><i class="fa fa-circle small"  style="color:#17a2b8;"></i> 麻雀ニュース</h3></strong>
-      <div class="border rounded" style="padding:50px;background-color:white;">
+      <div class="border" style="padding:50px;">
         <p><a href="<%= @firstnews.href  %>"><%= @firstnews.text  %></a></p>
         <p><a href="<%= @secondnews.href %>"><%= @secondnews.text %></a></p>
         <p><a href="<%= @thirdnews.href  %>"><%= @thirdnews.text  %></a></p>
