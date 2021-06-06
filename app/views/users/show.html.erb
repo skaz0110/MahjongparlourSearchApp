@@ -1,7 +1,16 @@
-<h5>マイページ</h5>
-<img src=<%= @user.image %> class = "mypage_image">
-  <p>
-    <%= @user.username %>
-  </p>
-    <%= @user.email %>
-
+<div class="container">
+  <div class="border mt-5" style="padding:50px;">
+    <div class="row">
+      <div class="col-2">
+        <img src=<%= @user.image %> class = "mypage_image">
+      </div>
+      <div class="col-10">
+        <p><h3><strong><%= @user.username %></strong></h3></p>
+        麻雀歴<br>
+        好きな雀荘<br>
+        ホーム<br>
+      </div>
+    </div>
+    <hr>
+  </div>
+</div>
