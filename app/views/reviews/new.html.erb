@@ -1,12 +1,8 @@
 <div class="card col-sm-8 mx-auto mt-5 p-5" style="border-radius: 20px;">
 
     <div class="d-flex align-items-center">
-    <h2><i class="far fa-comment-dots"style="color:#17a2b8;"></i> <strong>口コミ投稿</strong> </h2>
-    <div class="ml-auto posts_button">
-			<%= link_to '戻る', :back , class:"btn btn-outline-secondary"%>
-    </div>
+      <h2><i class="far fa-comment-dots"style="color:#17a2b8;"></i> <strong>口コミ投稿</strong> </h2>
     </div><hr>
-
 
     <%= form_with(model:[@post, @review], method: :post) do |f|  %>
     <%= render 'layouts/error_messages', model: f.object %>
@@ -24,6 +20,7 @@
 					</div>
 				</h5>
         <%= f.submit '投稿する', class: 'btn btn-info btn-block' %>
+        <%= link_to 'キャンセル', :back , class:"btn btn-secondary btn-block"%>
 
         <script>
           $('#star').raty({
