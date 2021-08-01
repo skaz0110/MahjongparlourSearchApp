@@ -1,9 +1,10 @@
 <div class="container mt-5">
 <div class="text-center mb-5"><h2><strong><i class="fas fa-crown"style="color:#17a2b8;"></i> 初心者おすすめTOP５</strong></h2></div>
-	<% @sortReviewAverage.first(5).each do |post|%>
+	<% @sortReviewAverage.first(5).each_with_index do |post,i|%>
   <%post = @posts.find(post[0])%>
   <%ave = post.reviews.average(:star).to_f.round(1)%>
 		<div class="card w-100 mb-5">
+		<strong><%="TOP #{i+1}"%></strong>
 			<div class="row no-gutters"style="margin: 30px">
 			<div class="col-md-4 my-auto">
 				<%= link_to post_path(post) ,class: "Editlink" do%>
