@@ -40,6 +40,7 @@ class HomesController < ApplicationController
 
     # スクレイピング
     agent = Mechanize.new
+    agent.verify_mode = OpenSSL::SSL::VERIFY_NONE
     page = agent.get('https://jan39.com/news/')
 
     # ニュースを３件取得
