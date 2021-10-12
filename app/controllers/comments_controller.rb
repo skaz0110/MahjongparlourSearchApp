@@ -15,9 +15,8 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.new(comment_params)
-
     @comment.save
-
+    
     # 雀活ページにリダイレクト
     redirect_to post_comments_path(params[:post_id])
   end

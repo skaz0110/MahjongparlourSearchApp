@@ -13,7 +13,6 @@ class ReviewsController < ApplicationController
     
     # 口コミ投稿済みの場合リダイレクトさせる
     redirect_to post_reviews_path(params[:post_id]), alert: '口コミ投稿済みです！' if @post.reviews.exists?(user_id:current_user.id)
-
     @review = current_user.reviews.new
   end
 
@@ -22,11 +21,9 @@ class ReviewsController < ApplicationController
     @post = Post.find(params[:post_id])
 
     if @review.save
-
       # 投稿の詳細ページへ戻る
       redirect_to post_reviews_path(params[:post_id]), notice: '口コミを投稿しました'
     else
-
       # 画面遷移はなし　再入力を促す
       flash.now[:alert] = '口コミの投稿に失敗しました'
       render :new
@@ -38,11 +35,7 @@ class ReviewsController < ApplicationController
     # redirect_back(fallback_location: root_path)
     redirect_to post_reviews_path(params[:post_id])
   end
-
-  # def edit
-  #   @review =Review.find_by(id: params[:id],post_id: params[:post_id])
-  # end
-
+  
   private
 
   def review_params
