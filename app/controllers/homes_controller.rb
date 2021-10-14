@@ -33,9 +33,8 @@ class HomesController < ApplicationController
     # 動画を取得
     @youtube_data = find_videos('M.LEAGUE [プロ麻雀リーグ]')
 
-    # 最新のコメントを５件取得取得
+    # 最新のコメントとレビューを５件ずつ取得
     @comments = Comment.all.order(id: 'DESC').limit(5)
-
     @reviews = Review.all.order(id: 'DESC').limit(5)
 
     # スクレイピング

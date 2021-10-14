@@ -3,8 +3,6 @@ class PostsController < ApplicationController
   before_action :login_check, only: %i[new update edit create]
   PER_PAGE = 10
 
-  def index; end
-
   def new
     @post = Post.new
   end
@@ -17,15 +15,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if @post.update(post_params)
-
       redirect_to post_path, notice: '更新しました'
-
     else
-
       flash.now[:alert] = '更新に失敗しました'
-      # エラーメッセ時を表示する
       render :edit
-
     end
   end
 
@@ -37,14 +30,11 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params)
 
     if @post.save
-
-      # 　コメント送信後は、一つ前のページへリダイレクトさせる。
+      #　コメント送信後は、一つ前のページへリダイレクトさせる。
       redirect_to post_path(@post), notice: '投稿しました'
-
     else
-
       flash.now[:alert] = '投稿に失敗しました'
-      # 　コメント送信後は、一つ前のページへリダイレクトさせる。
+      #　コメント送信後は、一つ前のページへリダイレクトさせる。
       render :new
     end
   end

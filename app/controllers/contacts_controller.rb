@@ -14,9 +14,7 @@ class ContactsController < ApplicationController
       render :new
     end
   end
-
-  def thanks; end
-
+  
   private
 
   def contact_params
