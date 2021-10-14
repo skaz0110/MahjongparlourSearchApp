@@ -13,7 +13,7 @@
           <% @comments.preload(:user).each do |comment| %>
             <p><hr>
             <img  height="30" src="<%= comment.user.image %>"class = "icon_image mb-2">
-            <%= comment.user.username %>
+            <%= link_to comment.user.username, user_path(comment.user) ,class:"Editlink"%>
             <div style="font-size:12px; color: #808080;"><%= l comment.created_at %></div>
             </p> 
             <%= safe_join(comment.content.split("\n"),tag(:br)) %>
