@@ -180,3 +180,15 @@ transform:rotate(45deg)translateY(-30%);
 nav.navbar {
   background-color: #808080;
 }
+
+//　いいねした雀荘のテーブル
+#likeTable {
+  background-color: white;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#likeTable thead {
+  background-color: #17a2b8;
+}
