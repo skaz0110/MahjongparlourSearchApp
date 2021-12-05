@@ -31,9 +31,9 @@ class PostsController < ApplicationController
 
     if @post.save
       #　コメント送信後は、一つ前のページへリダイレクトさせる。
-      redirect_to post_path(@post), notice: '投稿しました'
+      redirect_to post_path(@post), notice: '店舗を登録しました'
     else
-      flash.now[:alert] = '投稿に失敗しました'
+      flash.now[:alert] = '店舗の登録に失敗しました'
       #　コメント送信後は、一つ前のページへリダイレクトさせる。
       render :new
     end
