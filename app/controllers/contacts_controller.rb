@@ -11,7 +11,8 @@ class ContactsController < ApplicationController
       ContactMailer.contact_mail(@contact).deliver
       redirect_to thanks_contacts_path, notice: 'お問い合わせを送信しました'
     else
-      render :new
+      flash.now[:alert] = 'お問い合わせに失敗しました'
+      render :new 
     end
   end
   
