@@ -24,7 +24,13 @@ Rails.application.routes.draw do
   resource :contacts, only: [:new, :create] do
     get "/thanks" => "contacts#thanks"
   end
+
+  # 静的ページ
+  get 'policy' => 'high_voltage/pages#show', id: 'policy'
+  get 'terms' => 'high_voltage/pages#show', id: 'terms'
   
-  get '*path', controller: 'application', action: 'render_404'
+  # 例外
+  get '*not_found', to: 'application#render_404'
+  post '*not_found', to: 'application#render_404'
   
 end
