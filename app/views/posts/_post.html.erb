@@ -8,14 +8,14 @@
     <td>
       <%= link_to  like_path(@post), class: "btn btn-light", method: :DELETE, remote: true do%>
         <i class="fa fa-heart unlike-btn"></i> いいね 
-        <%= @post.likes.count %>
+        <%= @post.likes.size %>
       <% end %>
     </td>
   <% else %>
     <td>
       <%= link_to  create_like_path(@post) , class: "btn btn-light",  method: :POST, remote: true do%>
         <i class="fa fa-heart like-btn"></i> いいね
-        <%= @post.likes.count %>
+        <%= @post.likes.size %>
       <% end %>
     </td>
   <% end %>
@@ -26,7 +26,7 @@
 
   <%= link_to  new_user_session_path, class: "btn btn-light" do%>
     <i class="fa fa-heart unlike-btn"></i> いいね 
-    <%= @post.likes.count %>
+    <%= @post.likes.size %>
   <% end %>
 
 <% end %>

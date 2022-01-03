@@ -8,7 +8,7 @@
   <div class="card-text">
     <%= link_to post_reviews_path(@post) do %>
       <div class="Editlink">
-        口コミ<%= @post.reviews.count%>件 / <%=@post.reviews.average(:star).to_f.round(1)%>
+        口コミ<%= @post.reviews.size%>件 / <%=@post.reviews.average(:star).to_f.round(1)%>
       </div>
     <%end%>
   
