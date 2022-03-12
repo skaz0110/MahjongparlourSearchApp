@@ -4,8 +4,8 @@
 
 麻雀「初心者」のために特化した雀荘クチコミサービスです。
 
-＊現在停止中
-URL： [https://mahjongparlour-go.com](http://mahjongparlour-go.com/)
+
+URL： [https://mahjongparlour-go.com](http://mahjongparlour-go.com/)　＊現在停止中
 
 ゲストユーザーログインを用意してあります。
 
